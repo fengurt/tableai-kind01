@@ -1,0 +1,13 @@
+.kind-dev.pid
+.kind-dev.meta
+.env
+.env.local
+data/
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+node_modules/
+server/node_modules/
+server/dist/
+.DS_Store

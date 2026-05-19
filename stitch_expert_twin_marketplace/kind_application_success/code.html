@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Application Submitted - Alexandria</title>
+<!-- Tailwind CSS via CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Public+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Design System Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#737784",
+                        "secondary-container": "#dfe3e8",
+                        "on-tertiary-fixed-variant": "#524600",
+                        "primary": "#094cb2",
+                        "surface-container-high": "#e9e8e9",
+                        "on-tertiary-container": "#4a3f00",
+                        "on-primary-container": "#e7ebff",
+                        "on-surface": "#1b1c1d",
+                        "secondary-fixed": "#dfe3e8",
+                        "surface": "#faf9fa",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#6d5e00",
+                        "on-surface-variant": "#434653",
+                        "surface-container-highest": "#e3e2e3",
+                        "outline-variant": "#c3c6d5",
+                        "on-primary-fixed": "#001946",
+                        "on-background": "#1b1c1d",
+                        "surface-container-low": "#f5f3f4",
+                        "on-secondary-fixed-variant": "#42474b",
+                        "on-secondary-fixed": "#171c20",
+                        "error": "#ba1a1a",
+                        "background": "#faf9fa",
+                        "on-tertiary-fixed": "#211b00",
+                        "inverse-surface": "#303031",
+                        "surface-tint": "#2259bf",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dbdadb",
+                        "primary-container": "#3366cc",
+                        "secondary-fixed-dim": "#c2c7cc",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#b1c5ff",
+                        "surface-container": "#efedee",
+                        "primary-fixed": "#d9e2ff",
+                        "secondary": "#5a5f63",
+                        "surface-bright": "#faf9fa",
+                        "on-primary-fixed-variant": "#00419d",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f2f0f1",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#dcc661",
+                        "tertiary-container": "#bfab49",
+                        "inverse-primary": "#b1c5ff",
+                        "on-secondary-container": "#606569",
+                        "tertiary-fixed": "#f9e37a",
+                        "surface-variant": "#e3e2e3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Noto Serif", "serif"],
+                        "display": ["Noto Serif", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Public Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface font-body min-h-screen flex flex-col antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- 
+      Navigation Suppressed: As per Shared Components Logic (The "Semantic Shell" Mandate), 
+      this is a "Success/Confirmation" splash screen (Linear/Transactional intent), 
+      so the global navigation shell is explicitly excluded to prioritize the focused content.
+    -->
+<main class="flex-grow flex items-center justify-center px-6 py-24 relative overflow-hidden">
+<!-- Subtle background atmospheric blur to simulate a scholarly light-mode environment -->
+<div class="absolute inset-0 pointer-events-none opacity-40">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-surface-container-low rounded-[100%] blur-3xl mix-blend-multiply"></div>
+</div>
+<div class="max-w-2xl w-full text-center relative z-10 flex flex-col items-center">
+<!-- Minimalist Checkmark -->
+<div class="mb-12 inline-flex items-center justify-center w-24 h-24 rounded-full bg-surface-container transition-transform duration-700 ease-out animate-[scaleIn_0.8s_ease-out]">
+<span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'FILL' 0, 'wght' 200;">
+                    check
+                </span>
+</div>
+<!-- Typography Hierarchy -->
+<h1 class="font-headline text-4xl md:text-5xl lg:text-6xl text-on-surface font-medium tracking-tight mb-8 animate-[fadeInUp_0.8s_ease-out_0.2s_both]">
+                Application Under Review
+            </h1>
+<p class="font-body text-lg md:text-xl text-on-surface-variant leading-relaxed max-w-lg mx-auto mb-12 animate-[fadeInUp_0.8s_ease-out_0.4s_both]">
+                Our curatorial council will evaluate your credentials within 72 hours.
+            </p>
+<!-- Thematic Tagline using Tertiary archival gold -->
+<p class="font-headline italic text-tertiary text-xl md:text-2xl mb-16 animate-[fadeInUp_0.8s_ease-out_0.6s_both]">
+                "Precision takes time."
+            </p>
+<!-- Tertiary Action (Return Home) -->
+<div class="mt-8 animate-[fadeInUp_0.8s_ease-out_0.8s_both]">
+<a class="inline-flex items-center gap-2 font-label text-sm uppercase tracking-widest text-primary hover:text-on-primary-fixed-variant group transition-colors duration-300" href="#">
+<span class="relative">
+                        Return to Frontpage
+                        <span class="absolute -bottom-1 left-0 w-full h-[1px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+</span>
+<span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1" style="font-variation-settings: 'wght' 300;">
+                        arrow_forward
+                    </span>
+</a>
+</div>
+</div>
+</main>
+<style>
+        @keyframes scaleIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</body></html>

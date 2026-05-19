@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Apply to be an Expert - Alexandria</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;family=Inter:wght@300;400;500;600&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#737784",
+                        "secondary-container": "#dfe3e8",
+                        "on-tertiary-fixed-variant": "#524600",
+                        "primary": "#094cb2",
+                        "surface-container-high": "#e9e8e9",
+                        "on-tertiary-container": "#4a3f00",
+                        "on-primary-container": "#e7ebff",
+                        "on-surface": "#1b1c1d",
+                        "secondary-fixed": "#dfe3e8",
+                        "surface": "#faf9fa",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#6d5e00",
+                        "on-surface-variant": "#434653",
+                        "surface-container-highest": "#e3e2e3",
+                        "outline-variant": "#c3c6d5",
+                        "on-primary-fixed": "#001946",
+                        "on-background": "#1b1c1d",
+                        "surface-container-low": "#f5f3f4",
+                        "on-secondary-fixed-variant": "#42474b",
+                        "on-secondary-fixed": "#171c20",
+                        "error": "#ba1a1a",
+                        "background": "#faf9fa",
+                        "on-tertiary-fixed": "#211b00",
+                        "inverse-surface": "#303031",
+                        "surface-tint": "#2259bf",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dbdadb",
+                        "primary-container": "#3366cc",
+                        "secondary-fixed-dim": "#c2c7cc",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#b1c5ff",
+                        "surface-container": "#efedee",
+                        "primary-fixed": "#d9e2ff",
+                        "secondary": "#5a5f63",
+                        "surface-bright": "#faf9fa",
+                        "on-primary-fixed-variant": "#00419d",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f2f0f1",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#dcc661",
+                        "tertiary-container": "#bfab49",
+                        "inverse-primary": "#b1c5ff",
+                        "on-secondary-container": "#606569",
+                        "tertiary-fixed": "#f9e37a",
+                        "surface-variant": "#e3e2e3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Noto Serif", "serif"],
+                        "display": ["Noto Serif", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Public Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Noto Serif', serif; }
+        .label-text { font-family: 'Public Sans', sans-serif; }
+        
+        /* Custom scrollbar for textareas */
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: theme('colors.surface-container-low');
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background-color: theme('colors.outline-variant');
+            border-radius: 4px;
+        }
+        
+        .ghost-border {
+            box-shadow: inset 0 0 0 1px rgba(195, 198, 213, 0.5); /* outline-variant at ~50% for visibility, adjust as needed but guidelines say 15% - going with strict interpretation below */
+            border: 1px solid rgba(195, 198, 213, 0.15);
+        }
+        
+        /* Hide number input spinners */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col pt-24 pb-20 md:pb-12 antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar (Transactional - Hidden Nav, simplified header for focus) -->
+<header class="fixed top-0 w-full z-50 flex justify-center items-center px-6 py-4 bg-surface-container-lowest shadow-sm backdrop-blur-md bg-opacity-90">
+<div class="max-w-4xl w-full flex justify-between items-center">
+<a class="font-headline text-2xl italic font-semibold text-on-surface hover:text-primary transition-colors duration-300" href="#">
+                Alexandria
+            </a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 flex items-center gap-2 group" href="#">
+<span class="font-label text-sm font-medium">Cancel</span>
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">close</span>
+</a>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center px-6 py-12 w-full max-w-3xl mx-auto space-y-16">
+<!-- Header Section -->
+<section class="text-center space-y-6 max-w-2xl">
+<div class="inline-flex items-center justify-center p-3 bg-surface-container-low rounded-full mb-4">
+<span class="material-symbols-outlined text-3xl text-tertiary" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<h1 class="text-4xl md:text-5xl font-bold tracking-tight text-on-background leading-tight">
+                Apply to be an Expert
+            </h1>
+<p class="text-lg text-on-surface-variant font-body leading-relaxed">
+                Join an elite curation of minds. Alexandria seeks authorities capable of distilling dense complexity into profound clarity.
+            </p>
+</section>
+<!-- Application Form -->
+<form action="#" class="w-full space-y-16" method="POST">
+<!-- Section 1: Area of Authority -->
+<section class="space-y-8 relative">
+<div class="absolute -left-12 top-0 bottom-0 w-px bg-surface-variant hidden md:block"></div>
+<div class="absolute -left-[54px] top-1 w-6 h-6 rounded-full bg-primary flex items-center justify-center text-on-primary font-label text-xs font-bold hidden md:flex">1</div>
+<header class="space-y-2 border-b border-transparent pb-4" style="box-shadow: 0 1px 0 0 rgba(195, 198, 213, 0.15);">
+<h2 class="text-2xl font-semibold font-headline text-on-surface">Area of Authority</h2>
+<p class="text-on-surface-variant text-sm font-body">Select the primary domain where your expertise holds undisputed weight.</p>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Option 1 -->
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="domain" required="" type="radio" value="fine_art"/>
+<div class="h-full p-6 rounded-xl bg-surface-container-lowest border border-outline-variant/30 peer-checked:border-primary peer-checked:bg-surface-container-low hover:bg-surface-container-low transition-all duration-300 flex flex-col items-center text-center space-y-4">
+<span class="material-symbols-outlined text-3xl text-secondary group-hover:text-primary peer-checked:text-primary transition-colors">palette</span>
+<span class="font-label font-medium text-on-surface group-hover:text-primary peer-checked:text-primary">Fine Art</span>
+</div>
+</label>
+<!-- Option 2 -->
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="domain" type="radio" value="architecture"/>
+<div class="h-full p-6 rounded-xl bg-surface-container-lowest border border-outline-variant/30 peer-checked:border-primary peer-checked:bg-surface-container-low hover:bg-surface-container-low transition-all duration-300 flex flex-col items-center text-center space-y-4">
+<span class="material-symbols-outlined text-3xl text-secondary group-hover:text-primary peer-checked:text-primary transition-colors">architecture</span>
+<span class="font-label font-medium text-on-surface group-hover:text-primary peer-checked:text-primary">Architecture</span>
+</div>
+</label>
+<!-- Option 3 -->
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="domain" type="radio" value="macro_strategy"/>
+<div class="h-full p-6 rounded-xl bg-surface-container-lowest border border-outline-variant/30 peer-checked:border-primary peer-checked:bg-surface-container-low hover:bg-surface-container-low transition-all duration-300 flex flex-col items-center text-center space-y-4">
+<span class="material-symbols-outlined text-3xl text-secondary group-hover:text-primary peer-checked:text-primary transition-colors">public</span>
+<span class="font-label font-medium text-on-surface group-hover:text-primary peer-checked:text-primary">Macro-Strategy</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Section 2: Credentials -->
+<section class="space-y-8 relative">
+<div class="absolute -left-12 top-0 bottom-0 w-px bg-surface-variant hidden md:block"></div>
+<div class="absolute -left-[54px] top-1 w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center text-on-surface font-label text-xs font-bold hidden md:flex">2</div>
+<header class="space-y-2 border-b border-transparent pb-4" style="box-shadow: 0 1px 0 0 rgba(195, 198, 213, 0.15);">
+<h2 class="text-2xl font-semibold font-headline text-on-surface">Academic &amp; Professional Credentials</h2>
+<p class="text-on-surface-variant text-sm font-body">Provide a rigorous overview of your scholarly background and defining achievements.</p>
+</header>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="block font-label text-sm font-medium text-on-surface" for="credentials">Curriculum Vitae / Narrative Summary</label>
+<div class="relative">
+<textarea class="w-full bg-surface-container-lowest rounded-lg border border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary p-4 font-body text-on-background placeholder-outline transition-all resize-y" id="credentials" name="credentials" placeholder="Detail your academic tenure, published works, and significant contributions to your field..." required="" rows="8"></textarea>
+<div class="absolute bottom-4 right-4 text-xs font-label text-outline">Minimum 500 words recommended</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Portfolio/Vault -->
+<section class="space-y-8 relative">
+<div class="absolute -left-12 top-0 h-full w-px bg-surface-variant hidden md:block" style="background: linear-gradient(to bottom, theme('colors.surface-variant') 0%, transparent 100%);"></div>
+<div class="absolute -left-[54px] top-1 w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center text-on-surface font-label text-xs font-bold hidden md:flex">3</div>
+<header class="space-y-2 border-b border-transparent pb-4" style="box-shadow: 0 1px 0 0 rgba(195, 198, 213, 0.15);">
+<h2 class="text-2xl font-semibold font-headline text-on-surface">Portfolio &amp; Core Texts</h2>
+<p class="text-on-surface-variant text-sm font-body">Upload or link to seminal pieces that demonstrate the depth and rigor of your thought.</p>
+</header>
+<div class="p-8 rounded-xl bg-surface-container-low border border-dashed border-outline-variant/50 flex flex-col items-center justify-center text-center space-y-4 hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<div class="p-4 bg-surface-container-lowest rounded-full group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-4xl text-secondary">cloud_upload</span>
+</div>
+<div class="space-y-1">
+<p class="font-label text-base font-medium text-on-surface">Upload Documents to Vault</p>
+<p class="font-body text-sm text-on-surface-variant">PDF, EPUB, or DOCX up to 50MB.</p>
+</div>
+<button class="mt-4 px-6 py-2 bg-surface-container-lowest text-primary font-label text-sm font-semibold rounded-lg hover:bg-primary hover:text-on-primary transition-colors border border-outline-variant/30 border-transparent" type="button">
+                        Select Files
+                    </button>
+</div>
+<div class="space-y-2">
+<label class="block font-label text-sm font-medium text-on-surface" for="portfolio_link">External Archive Link (Optional)</label>
+<input class="w-full bg-surface-container-lowest rounded-lg border border-outline-variant/30 focus:border-primary focus:ring-1 focus:ring-primary p-3 font-body text-on-background placeholder-outline transition-all" id="portfolio_link" name="portfolio_link" placeholder="https://" type="url"/>
+</div>
+</section>
+<!-- Submission Area -->
+<div class="pt-8 flex flex-col items-center space-y-6">
+<button class="px-12 py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-label text-base font-bold rounded-xl hover:opacity-90 transition-opacity shadow-sm flex items-center gap-2" type="submit">
+                    Submit Application
+                    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<p class="text-xs font-body text-on-surface-variant text-center max-w-md">
+                    By submitting, you attest to the accuracy of these credentials. Our editorial board reviews applications on a rolling basis.
+                </p>
+</div>
+</form>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 mt-12 bg-surface-container-lowest border-t border-transparent" style="box-shadow: 0 -1px 0 0 rgba(195, 198, 213, 0.15);">
+<div class="max-w-4xl mx-auto px-6 flex flex-col items-center justify-center space-y-4">
+<span class="font-headline text-lg italic font-semibold text-on-surface opacity-50">Alexandria</span>
+<p class="font-label text-xs tracking-widest uppercase text-on-surface-variant">OPC Global Empowered</p>
+</div>
+</footer>
+</body></html>

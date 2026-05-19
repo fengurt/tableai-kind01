@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Knowledge Vault - KiND</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001946",
+                        "surface-container-highest": "#e3e2e3",
+                        "inverse-surface": "#303031",
+                        "tertiary-fixed": "#f9e37a",
+                        "inverse-on-surface": "#f2f0f1",
+                        "outline": "#737784",
+                        "surface-dim": "#dbdadb",
+                        "on-primary-fixed-variant": "#00419d",
+                        "secondary-fixed": "#dfe3e8",
+                        "on-background": "#1b1c1d",
+                        "secondary": "#5a5f63",
+                        "primary-container": "#3366cc",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1b1c1d",
+                        "tertiary": "#6d5e00",
+                        "on-surface-variant": "#434653",
+                        "on-secondary-fixed-variant": "#42474b",
+                        "primary-fixed": "#d9e2ff",
+                        "secondary-container": "#dfe3e8",
+                        "primary": "#094cb2",
+                        "on-tertiary-fixed-variant": "#524600",
+                        "on-secondary-container": "#606569",
+                        "outline-variant": "#c3c6d5",
+                        "on-tertiary-fixed": "#211b00",
+                        "surface-container-low": "#f5f3f4",
+                        "surface-container": "#efedee",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#4a3f00",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "background": "#faf9fa",
+                        "surface-tint": "#2259bf",
+                        "on-secondary-fixed": "#171c20",
+                        "inverse-primary": "#b1c5ff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#b1c5ff",
+                        "on-primary-container": "#e7ebff",
+                        "tertiary-container": "#bfab49",
+                        "surface": "#faf9fa",
+                        "secondary-fixed-dim": "#c2c7cc",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#dcc661",
+                        "surface-container-high": "#e9e8e9",
+                        "surface-bright": "#faf9fa",
+                        "surface-variant": "#e3e2e3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Noto Serif", "serif"],
+                        "display": ["Noto Serif", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Public Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); }
+        /* Custom scrollbar for an editorial feel */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: theme('colors.surface-variant'); border-radius: theme('borderRadius.full'); }
+        ::-webkit-scrollbar-thumb:hover { background: theme('colors.outline-variant'); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="text-on-background font-body antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded-full overflow-hidden bg-surface-container-highest ring-2 ring-transparent transition-all hover:ring-surface-variant cursor-pointer">
+<img alt="Expert Avatar" class="w-full h-full object-cover" data-alt="A high-quality professional portrait of a distinguished female expert, styled with an editorial, sophisticated aesthetic. The lighting is soft and natural, emphasizing a scholarly, knowledgeable demeanor. The background is a muted, neutral tone that aligns perfectly with a premium, light-mode interface palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQBUCyjqF6FTAxE3AyJvKfZk8-KBUnFe7s3eS6c5shZg6CjodqA4kLRenOGrBzNxlRx9YNttVRXa3ca7kSChhZIQPTJlE7Vjcdxb-B6vkoP1Tdxqx1cpZe545MHtnLIr3bYhb_qoebacWzLK1QWmNumnGWgndC6W47O3rjui9rNQTTzs279nRINHEgVx1PebfiT3zt-a4rBks6jbgY1ZGBdnw6_St5yZBMqUoE86RYCquhPLB8MgQPuTWhhqe1-6kkEsia5SQpVw"/>
+</div>
+</div>
+<h1 class="font-headline text-2xl italic font-semibold text-on-surface">KiND</h1>
+<button aria-label="Menu" class="text-on-surface-variant hover:text-primary transition-colors duration-300 w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">menu</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-28 pb-32 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto w-full">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+<div class="max-w-2xl">
+<p class="font-label text-sm uppercase tracking-widest text-primary font-semibold mb-3">Repository</p>
+<h2 class="font-headline text-5xl md:text-6xl font-medium tracking-tight text-on-surface mb-4">Knowledge Vault</h2>
+<p class="font-body text-lg text-on-surface-variant leading-relaxed">
+                    Curate the foundational texts, transcripts, and primary sources that define your persona's intellect.
+                </p>
+</div>
+<div class="flex-shrink-0">
+<button class="group relative flex items-center gap-3 bg-gradient-to-r from-primary to-surface-tint text-on-primary px-8 py-4 rounded-xl font-label font-medium overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5">
+<div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+<span class="material-symbols-outlined relative z-10" style="font-variation-settings: 'wght' 400;">add</span>
+<span class="relative z-10 text-sm tracking-wide">Add Knowledge Source</span>
+</button>
+</div>
+</div>
+<!-- Bento Grid Layout for Manuscripts -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[auto]">
+<!-- Featured Document (Large Span) -->
+<div class="col-span-1 md:col-span-2 lg:col-span-2 bg-surface-container-lowest rounded-xl p-8 flex flex-col justify-between group cursor-pointer transition-colors duration-300 hover:bg-surface-container-low relative overflow-hidden">
+<!-- Subtle decorative background element instead of border -->
+<div class="absolute right-0 top-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-50"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-12">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">book</span>
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Core Text</span>
+</div>
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container-highest text-on-surface font-label text-[10px] uppercase tracking-wider font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mr-2"></span>
+                            Ingested
+                        </span>
+</div>
+<div class="max-w-lg">
+<h3 class="font-headline text-3xl text-on-surface mb-3 group-hover:text-primary transition-colors">The Architecture of Thought.pdf</h3>
+<p class="font-body text-on-surface-variant line-clamp-2 mb-6">A comprehensive exploration of cognitive models and heuristic frameworks critical for nuanced AI reasoning and tone generation.</p>
+<div class="flex items-center gap-4 text-sm font-label text-secondary">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">file_present</span> 4.2 MB</span>
+<span>•</span>
+<span>Added Oct 12</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Analyzing State Card -->
+<div class="col-span-1 bg-surface-container rounded-xl p-8 flex flex-col relative overflow-hidden cursor-progress">
+<!-- Analyzing shimmer effect -->
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full animate-[shimmer_2.5s_infinite] pointer-events-none"></div>
+<div class="flex justify-between items-start mb-8 relative z-10">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/30 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">graphic_eq</span>
+</div>
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-tertiary-fixed/40 text-on-tertiary-fixed font-label text-[10px] uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[12px] mr-1 animate-spin">sync</span>
+                        Analyzing
+                    </span>
+</div>
+<div class="mt-auto relative z-10">
+<h3 class="font-headline text-xl text-on-surface mb-2">Q3 Interview Transcripts</h3>
+<p class="font-body text-sm text-on-surface-variant mb-4">Extracting conversational patterns and idiomatic expressions.</p>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5">
+<div class="bg-tertiary h-1.5 rounded-full" style="width: 65%"></div>
+</div>
+</div>
+</div>
+<!-- Web Source Card -->
+<div class="col-span-1 bg-surface-container-low rounded-xl p-8 flex flex-col group hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-6">
+<div class="p-2 bg-surface-container-lowest rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">language</span>
+</div>
+<button class="text-outline hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<div class="mt-auto">
+<h3 class="font-body font-medium text-lg text-on-surface mb-1 truncate">Design Systems Manifesto</h3>
+<p class="font-body text-sm text-primary mb-4 truncate">https://example.com/editorial-manifesto</p>
+<span class="inline-flex items-center text-secondary font-label text-[10px] uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-outline mr-2"></span>
+                        Pending Sync
+                    </span>
+</div>
+</div>
+<!-- Standard Document Card -->
+<div class="col-span-1 bg-surface-container-low rounded-xl p-8 flex flex-col group hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-6">
+<div class="p-2 bg-surface-container-lowest rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">article</span>
+</div>
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container-highest text-on-surface font-label text-[10px] uppercase tracking-wider font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mr-2"></span>
+                        Ingested
+                    </span>
+</div>
+<div class="mt-auto">
+<h3 class="font-headline text-xl text-on-surface mb-2 line-clamp-2">Historical Precedents in Digital Typo...</h3>
+<p class="font-body text-sm text-on-surface-variant mb-4">EPUB • 1.2 MB</p>
+</div>
+</div>
+<!-- Conceptual Image Card (Demonstrating style constraints) -->
+<div class="col-span-1 md:col-span-2 lg:col-span-1 rounded-xl overflow-hidden relative group cursor-pointer aspect-square lg:aspect-auto">
+<img alt="Library Background" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A minimalist, abstract conceptual photograph representing curated knowledge and archival intelligence. The image features a macro shot of stacked, elegant paper pages creating geometric shadows and subtle textures in muted tones of pristine white and soft cream. The aesthetic is extremely clean, editorial, and high-end, perfectly suited for a scholarly interface in light mode, evoking a sense of deep, refined literature." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjPxRUIDTaUlMK9LLC-_8n08UQd7dkDZB_rUhyCQcBLr49YwSK5zTddVuCcGa5Cl4FpeDWT8lJmaaKiOyifB3cuazVx-HFE8YgbsRVIZQW4Pn2OiQ0y6fdj_QBWZftrXBDUY5_e_VQEDDGfU9jnJbZe2WWTgYEM1sElnZZuVJEqp74omYq0d4dmKR9AZ83tQPUnZ4hlPvRdd_iP3i8CKlskh8wCbq28Bqogv9MpC21NfDcQAjtqVTUhIRSbYHyIy-E2KKEwoluJQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent"></div>
+<div class="absolute inset-x-0 bottom-0 p-8 flex justify-between items-end">
+<div>
+<span class="font-label text-xs uppercase tracking-widest text-primary-container font-semibold mb-2 block">Archive</span>
+<h3 class="font-headline text-2xl text-on-surface">Browse Full Collection</h3>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm group-hover:bg-primary group-hover:text-on-primary transition-colors duration-300">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-16 bg-surface-container-lowest/80 backdrop-blur-xl md:hidden">
+<button aria-label="Hub" class="flex flex-col items-center justify-center text-secondary pt-2 hover:text-primary-container transition-all">
+<span class="material-symbols-outlined text-2xl mb-1">architecture</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Hub</span>
+</button>
+<button aria-label="Market" class="flex flex-col items-center justify-center text-secondary pt-2 hover:text-primary-container transition-all">
+<span class="material-symbols-outlined text-2xl mb-1">auto_awesome</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Market</span>
+</button>
+<button aria-label="Requests" class="flex flex-col items-center justify-center text-secondary pt-2 hover:text-primary-container transition-all">
+<span class="material-symbols-outlined text-2xl mb-1">post_add</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Requests</span>
+</button>
+<button aria-current="page" aria-label="Vault" class="flex flex-col items-center justify-center text-primary border-t-2 border-primary pt-2 scale-95 duration-150">
+<span class="material-symbols-outlined text-2xl mb-1" style="font-variation-settings: 'FILL' 1;">history_edu</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Vault</span>
+</button>
+</nav>
+</body></html>

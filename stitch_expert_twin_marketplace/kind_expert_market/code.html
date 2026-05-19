@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>KiND - Expert Marketplace</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;family=Public+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#171c20",
+                        "secondary-fixed-dim": "#c2c7cc",
+                        "inverse-primary": "#b1c5ff",
+                        "surface-container-low": "#f5f3f4",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#dfe3e8",
+                        "outline": "#737784",
+                        "on-surface-variant": "#434653",
+                        "surface-bright": "#faf9fa",
+                        "primary": "#094cb2",
+                        "tertiary-fixed-dim": "#dcc661",
+                        "tertiary-fixed": "#f9e37a",
+                        "background": "#faf9fa",
+                        "on-tertiary-fixed-variant": "#524600",
+                        "on-primary-fixed-variant": "#00419d",
+                        "on-secondary-fixed-variant": "#42474b",
+                        "primary-container": "#3366cc",
+                        "secondary-container": "#dfe3e8",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#303031",
+                        "surface-tint": "#2259bf",
+                        "surface": "#faf9fa",
+                        "on-surface": "#1b1c1d",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#efedee",
+                        "primary-fixed-dim": "#b1c5ff",
+                        "error": "#ba1a1a",
+                        "secondary": "#5a5f63",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#211b00",
+                        "on-background": "#1b1c1d",
+                        "inverse-on-surface": "#f2f0f1",
+                        "primary-fixed": "#d9e2ff",
+                        "on-primary-container": "#e7ebff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#606569",
+                        "surface-dim": "#dbdadb",
+                        "tertiary": "#6d5e00",
+                        "surface-container-highest": "#e3e2e3",
+                        "surface-container-high": "#e9e8e9",
+                        "outline-variant": "#c3c6d5",
+                        "on-tertiary-container": "#4a3f00",
+                        "tertiary-container": "#bfab49",
+                        "surface-variant": "#e3e2e3",
+                        "on-primary-fixed": "#001946"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Noto Serif", "serif"],
+                        "display": ["Noto Serif", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Public Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 20px); }
+        .pt-safe { padding-top: env(safe-area-inset-top, 20px); }
+        body { -webkit-tap-highlight-color: transparent; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-surface-container-lowest dark:bg-surface-dim shadow-sm pt-safe">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden">
+<img alt="Expert profile picture" class="w-full h-full object-cover grayscale" data-alt="Close up black and white portrait of a sophisticated woman with elegant styling. Soft, high-key studio lighting creates a premium editorial aesthetic. The mood is authoritative yet approachable, fitting for a scholarly or professional context. High contrast with deep blacks and bright whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTDWwxRM2RMR4JW9nGbSmcjKxdFfpnUDtQQMYyKZWyHN9TFLMVKREG5B-xh_1xXSTRfMgubWE2w_u9LiNstXZdNKzIFYru9htlY2s8NFo86Qnj1Ca_TULGQbP7uWcKzINT7chGntJyaeUL_z6-q6PnO9NvmWIXiBIdO2mOkCv6LUEzul4X_Y6GJKGzTP6Kkqr4MiFqQlrUNe9SD0cVF9YZWvqMV0PaBv3oEGY-JDwLOUzlcWiT9r10UBcgAZTZYLSlsqdlgGW0dg"/>
+</div>
+<h1 class="font-headline text-2xl italic font-semibold text-on-surface dark:text-on-background">KiND</h1>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-2xl" data-icon="menu">menu</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 px-6 space-y-12">
+<!-- Search/Filter Area -->
+<section class="space-y-4">
+<div class="relative">
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary focus:ring-0 px-0 py-3 font-body text-lg placeholder:text-on-surface-variant/50 transition-colors" placeholder="Search expertise, mentors, topics..." type="text"/>
+<span class="material-symbols-outlined absolute right-0 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+</div>
+<div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide snap-x">
+<span class="px-4 py-2 rounded-full bg-surface-container text-on-surface text-sm font-label whitespace-nowrap snap-start">Fine Art</span>
+<span class="px-4 py-2 rounded-full bg-transparent border border-outline-variant text-on-surface-variant text-sm font-label whitespace-nowrap snap-start">Architecture</span>
+<span class="px-4 py-2 rounded-full bg-transparent border border-outline-variant text-on-surface-variant text-sm font-label whitespace-nowrap snap-start">Literature</span>
+<span class="px-4 py-2 rounded-full bg-transparent border border-outline-variant text-on-surface-variant text-sm font-label whitespace-nowrap snap-start">Philosophy</span>
+</div>
+</section>
+<!-- Banner -->
+<section class="relative rounded-xl overflow-hidden bg-surface-container-high p-8 flex flex-col justify-between min-h-[280px]">
+<div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"></div>
+<div class="relative z-10 max-w-[80%]">
+<h2 class="font-headline text-3xl font-medium tracking-tight text-on-surface leading-snug mb-4">Seek Perfection.<br/>Find your Mentor.</h2>
+<p class="font-body text-on-surface-variant mb-8 text-sm">Connect with global authorities for critique and curation.</p>
+</div>
+<button class="relative z-10 self-start bg-gradient-to-r from-primary to-primary-container text-on-primary px-6 py-3 rounded-lg font-label text-sm tracking-wide hover:opacity-90 transition-opacity">
+                Create Brief
+            </button>
+</section>
+<!-- Featured Mentors Grid -->
+<section class="space-y-6">
+<h3 class="font-headline text-xl text-on-surface border-b border-outline-variant pb-2">Featured Mentors</h3>
+<div class="space-y-8">
+<!-- Mentor Card 1 -->
+<article class="group flex gap-6">
+<div class="w-24 h-32 rounded-lg bg-surface-variant shrink-0 overflow-hidden shadow-sm">
+<img alt="Prof. Elena Rossi" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 transition-transform duration-700" data-alt="Black and white portrait of an intellectual older woman looking directly at the camera. She wears minimalist dark clothing. The lighting is dramatic and directional, creating a moody, high-end editorial atmosphere. The background is a soft, indeterminate light grey, keeping the focus entirely on her authoritative presence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLaKhFuR8HJ62XgApE7zS3q3V5szzHVf4WGGD1qJJQ9WBDAW97yPxpVOM2GBS-BGwIcBe7-q4eESXaZYwvY6ARkDBsVdrcHc7qdCJliCXlYEucUz_MRirP5IOznDSmf36x8vpiXKzmSS4O2p6Lv6tWAY2rKmKPC6N0iA-S2MhXr2VP8Ssaz_HNRDA9cY3twAY4iGJ8wtHy_f1JlbWIIaIJBbWKCnw8JaubuDyTcJCqFv03VMa5SuuXeW29dUsSs_ItPJa24eBMCg"/>
+</div>
+<div class="flex flex-col justify-center">
+<div class="flex items-center gap-1 text-tertiary mb-1">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label text-xs tracking-wider uppercase">Top Authority</span>
+</div>
+<h4 class="font-headline text-lg font-medium text-on-surface leading-tight">Prof. Elena Rossi</h4>
+<p class="font-body text-sm text-on-surface-variant mb-4">Fine Art Curator</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-label text-sm text-on-surface">€250 / Review</span>
+<button class="text-primary hover:text-primary-container font-label text-sm tracking-wide underline underline-offset-4 decoration-1">Hire</button>
+</div>
+</div>
+</article>
+<!-- Mentor Card 2 -->
+<article class="group flex gap-6">
+<div class="w-24 h-32 rounded-lg bg-surface-variant shrink-0 overflow-hidden shadow-sm">
+<img alt="Dr. Julian Hayes" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 transition-transform duration-700" data-alt="Striking black and white portrait of a thoughtful man in his forties with a slight beard. He is captured in profile, looking off-camera. The lighting is soft and cinematic, emphasizing the contours of his face against a completely white, stark background. High-contrast, premium magazine style aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ7SXBOxArgSziyP3zmqkHtkhsAUJiMl6p6zverWPMyNuukNIx3d0MwtqXNlIX46thw4MPGnVsvNODLygjUWzzsJ4qCTYpq1cacv_JI3zdbmmDIzGwb8I2LNOG3j5uaAL_OcboPZ3pqZOyZg2kefS9KBPzuWYQ2AsxoMg57im52CVwm56Mp57f37mdt4e5_fjkmOWoGbL-yl4JaTMVjpPfI1HR2dKZbE7xiR72wpxj206Ua8Hyt95G1XCuGWuOB4vxfQGnZnkjZQ"/>
+</div>
+<div class="flex flex-col justify-center">
+<h4 class="font-headline text-lg font-medium text-on-surface leading-tight">Dr. Julian Hayes</h4>
+<p class="font-body text-sm text-on-surface-variant mb-4">Architectural Historian</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-label text-sm text-on-surface">€300 / Review</span>
+<button class="text-primary hover:text-primary-container font-label text-sm tracking-wide underline underline-offset-4 decoration-1">Hire</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-16 bg-surface-container-lowest/80 dark:bg-surface-dim/80 backdrop-blur-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim pt-2 hover:text-primary-container dark:hover:text-primary-fixed-dim transition-all w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1 text-[20px]" data-icon="architecture">architecture</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Hub</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary border-t-2 border-primary pt-2 hover:text-primary-container dark:hover:text-primary-fixed-dim transition-all w-full h-full scale-95 duration-150 opacity-80" href="#">
+<span class="material-symbols-outlined mb-1 text-[20px]" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label text-[10px] uppercase tracking-widest font-bold">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim pt-2 hover:text-primary-container dark:hover:text-primary-fixed-dim transition-all w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1 text-[20px]" data-icon="post_add">post_add</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Requests</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim pt-2 hover:text-primary-container dark:hover:text-primary-fixed-dim transition-all w-full h-full" href="#">
+<span class="material-symbols-outlined mb-1 text-[20px]" data-icon="history_edu">history_edu</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Vault</span>
+</a>
+</nav>
+</body></html>

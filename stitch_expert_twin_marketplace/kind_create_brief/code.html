@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Consultation Brief - KiND</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..700;1,400..700&amp;family=Inter:wght@300..600&amp;family=Public+Sans:wght@300..600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#ffdad6",
+                      "surface-container": "#efedee",
+                      "surface-tint": "#2259bf",
+                      "surface": "#faf9fa",
+                      "on-surface": "#1b1c1d",
+                      "secondary-container": "#dfe3e8",
+                      "on-error-container": "#93000a",
+                      "inverse-surface": "#303031",
+                      "on-secondary-fixed-variant": "#42474b",
+                      "primary-container": "#3366cc",
+                      "secondary": "#5a5f63",
+                      "primary-fixed-dim": "#b1c5ff",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed": "#211b00",
+                      "on-background": "#1b1c1d",
+                      "on-primary": "#ffffff",
+                      "surface-container-high": "#e9e8e9",
+                      "outline-variant": "#c3c6d5",
+                      "on-tertiary-container": "#4a3f00",
+                      "tertiary-container": "#bfab49",
+                      "surface-variant": "#e3e2e3",
+                      "on-primary-fixed": "#001946",
+                      "surface-dim": "#dbdadb",
+                      "tertiary": "#6d5e00",
+                      "surface-container-highest": "#e3e2e3",
+                      "on-primary-container": "#e7ebff",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-container": "#606569",
+                      "inverse-on-surface": "#f2f0f1",
+                      "primary-fixed": "#d9e2ff",
+                      "on-error": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed-dim": "#c2c7cc",
+                      "inverse-primary": "#b1c5ff",
+                      "surface-container-low": "#f5f3f4",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed": "#171c20",
+                      "surface-bright": "#faf9fa",
+                      "primary": "#094cb2",
+                      "outline": "#737784",
+                      "on-surface-variant": "#434653",
+                      "secondary-fixed": "#dfe3e8",
+                      "on-primary-fixed-variant": "#00419d",
+                      "on-tertiary-fixed-variant": "#524600",
+                      "tertiary-fixed-dim": "#dcc661",
+                      "tertiary-fixed": "#f9e37a",
+                      "background": "#faf9fa"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": [
+                              "Noto Serif"
+                      ],
+                      "display": [
+                              "Noto Serif"
+                      ],
+                      "body": [
+                              "Inter"
+                      ],
+                      "label": [
+                              "Public Sans"
+                      ]
+              },
+              "fontSize": {}
+      },
+          },
+        }
+      </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Noto Serif', serif; }
+        .font-label { font-family: 'Public Sans', sans-serif; }
+        .ghost-border { border: 1px solid rgba(195, 198, 213, 0.15); }
+        .focus-primary:focus-within { border-color: #094cb2; }
+        /* Hide scrollbar for cleaner look */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col pt-[72px] pb-[80px] md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-surface-container-lowest shadow-sm h-[72px]">
+<div class="flex items-center gap-4">
+<img alt="Expert profile picture" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrdHxcyNgO8wwB_2EOHPWuvu5boDugsu-aQQRlwJP68Kc7tgoKPgkfHEB3Hhc1rlHYpRbyGZbxdc9Jb5US3Klsj0-yJZZkwTL18fn_Cl9yIP5SifJqJwrwQIljcXpmGkaSDFhoyJWrA7DZS8Mx7jhQt8smwEuMg1JUwktBL1tp79Wy16KwizDhoiuXE07YarOAXGaEsMxtUtx7y2-xYNkyGT5Q3R_LQETh2Zg78NFkPEMhOTemDmyaG7kEn7EwCsW2vMoXo31J0g"/>
+</div>
+<div class="absolute left-1/2 -translate-x-1/2">
+<h1 class="font-headline text-2xl italic font-semibold text-on-surface">Alexandria</h1>
+</div>
+<button class="text-on-surface hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center px-6 md:px-12 py-12 w-full max-w-4xl mx-auto">
+<div class="w-full text-center mb-16">
+<span class="font-label text-xs uppercase tracking-[0.2em] text-secondary mb-4 block">Consultation Request</span>
+<h2 class="font-headline text-4xl md:text-5xl font-medium tracking-tight text-on-surface mb-6">Create Brief</h2>
+<p class="font-body text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+                Detail your challenge to be matched with the foremost minds in our curatorial network. Clarity yields precision.
+            </p>
+</div>
+<form class="w-full space-y-12">
+<!-- Section 1: Topic/Field -->
+<section class="bg-surface-container-lowest p-8 rounded-xl ghost-border shadow-[0_4px_40px_-10px_rgba(27,28,29,0.04)] focus-primary transition-colors duration-300">
+<div class="mb-6">
+<h3 class="font-headline text-xl text-on-surface mb-2">1. Domain of Inquiry</h3>
+<p class="font-body text-sm text-on-surface-variant">Select the primary field your challenge resides in.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="domain" type="radio" value="strategy"/>
+<div class="p-4 rounded-lg bg-surface-container-lowest border border-outline-variant/30 peer-checked:bg-primary-container/10 peer-checked:border-primary peer-checked:text-primary text-on-surface-variant hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined mb-2 block">chess</span>
+<span class="font-label text-sm font-medium">Strategy &amp; Ops</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="domain" type="radio" value="design"/>
+<div class="p-4 rounded-lg bg-surface-container-lowest border border-outline-variant/30 peer-checked:bg-primary-container/10 peer-checked:border-primary peer-checked:text-primary text-on-surface-variant hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined mb-2 block">architecture</span>
+<span class="font-label text-sm font-medium">Design &amp; UX</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="domain" type="radio" value="technology"/>
+<div class="p-4 rounded-lg bg-surface-container-lowest border border-outline-variant/30 peer-checked:bg-primary-container/10 peer-checked:border-primary peer-checked:text-primary text-on-surface-variant hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined mb-2 block">memory</span>
+<span class="font-label text-sm font-medium">Technology</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Section 2: The Challenge -->
+<section class="bg-surface-container-lowest p-8 rounded-xl ghost-border shadow-[0_4px_40px_-10px_rgba(27,28,29,0.04)] focus-primary transition-colors duration-300">
+<div class="mb-6">
+<h3 class="font-headline text-xl text-on-surface mb-2">2. The Challenge</h3>
+<p class="font-body text-sm text-on-surface-variant">Articulate the core problem you are facing.</p>
+</div>
+<div class="relative">
+<textarea class="w-full bg-surface border border-outline-variant/30 rounded-lg p-4 font-body text-on-surface placeholder:text-outline focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none" placeholder="Describe the context, the roadblocks, and what you have attempted so far..." rows="5"></textarea>
+</div>
+</section>
+<!-- Section 3: Desired Outcome -->
+<section class="bg-surface-container-lowest p-8 rounded-xl ghost-border shadow-[0_4px_40px_-10px_rgba(27,28,29,0.04)] focus-primary transition-colors duration-300">
+<div class="mb-6">
+<h3 class="font-headline text-xl text-on-surface mb-2">3. Desired Resolution</h3>
+<p class="font-body text-sm text-on-surface-variant">What does success look like post-consultation?</p>
+</div>
+<div class="relative">
+<textarea class="w-full bg-surface border border-outline-variant/30 rounded-lg p-4 font-body text-on-surface placeholder:text-outline focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none" placeholder="E.g., A strategic roadmap, architectural review, or actionable design feedback." rows="3"></textarea>
+</div>
+</section>
+<!-- Section 4: Parameters -->
+<section class="bg-surface-container-lowest p-8 rounded-xl ghost-border shadow-[0_4px_40px_-10px_rgba(27,28,29,0.04)] focus-primary transition-colors duration-300">
+<div class="mb-6">
+<h3 class="font-headline text-xl text-on-surface mb-2">4. Parameters</h3>
+<p class="font-body text-sm text-on-surface-variant">Establish boundaries for engagement.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<label class="font-label text-xs uppercase tracking-wider text-secondary block mb-3">Timeline Urgency</label>
+<select class="w-full bg-surface border border-outline-variant/30 rounded-lg p-3 font-body text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none appearance-none cursor-pointer">
+<option>Standard (1-2 Weeks)</option>
+<option>Expedited (3-5 Days)</option>
+<option>Critical (48 Hours)</option>
+</select>
+</div>
+<div>
+<label class="font-label text-xs uppercase tracking-wider text-secondary block mb-3">Budget Tier</label>
+<select class="w-full bg-surface border border-outline-variant/30 rounded-lg p-3 font-body text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none appearance-none cursor-pointer">
+<option>Advisory ($500 - $1k)</option>
+<option>Deep Dive ($1k - $5k)</option>
+<option>Comprehensive ($5k+)</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Submit Action -->
+<div class="pt-8 flex justify-end items-center border-t border-surface-variant mt-12">
+<button class="text-secondary hover:text-primary font-label text-sm tracking-wide mr-6 transition-colors" type="button">
+                    Save Draft
+                </button>
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary font-label font-medium text-sm tracking-wide px-8 py-4 rounded-full hover:opacity-90 shadow-lg shadow-primary/20 transition-all transform hover:-translate-y-0.5" type="submit">
+                    Submit Brief
+                </button>
+</div>
+</form>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-16 bg-surface-container-lowest/80 backdrop-blur-xl">
+<a class="flex flex-col items-center justify-center text-secondary pt-2 hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">architecture</span>
+<span class="font-label text-[10px] uppercase tracking-widest mt-1">Hub</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary pt-2 hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">auto_awesome</span>
+<span class="font-label text-[10px] uppercase tracking-widest mt-1">Market</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary border-t-2 border-primary pt-2 scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">post_add</span>
+<span class="font-label text-[10px] uppercase tracking-widest mt-1">Requests</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary pt-2 hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">history_edu</span>
+<span class="font-label text-[10px] uppercase tracking-widest mt-1">Vault</span>
+</a>
+</nav>
+</body></html>

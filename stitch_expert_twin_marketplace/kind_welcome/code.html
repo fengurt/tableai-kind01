@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KiND - Welcome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Public+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#737784",
+                    "secondary-container": "#dfe3e8",
+                    "on-tertiary-fixed-variant": "#524600",
+                    "primary": "#094cb2",
+                    "surface-container-high": "#e9e8e9",
+                    "on-tertiary-container": "#4a3f00",
+                    "on-primary-container": "#e7ebff",
+                    "on-surface": "#1b1c1d",
+                    "secondary-fixed": "#dfe3e8",
+                    "surface": "#faf9fa",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#6d5e00",
+                    "on-surface-variant": "#434653",
+                    "surface-container-highest": "#e3e2e3",
+                    "outline-variant": "#c3c6d5",
+                    "on-primary-fixed": "#001946",
+                    "on-background": "#1b1c1d",
+                    "surface-container-low": "#f5f3f4",
+                    "on-secondary-fixed-variant": "#42474b",
+                    "on-secondary-fixed": "#171c20",
+                    "error": "#ba1a1a",
+                    "background": "#faf9fa",
+                    "on-tertiary-fixed": "#211b00",
+                    "inverse-surface": "#303031",
+                    "surface-tint": "#2259bf",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dbdadb",
+                    "primary-container": "#3366cc",
+                    "secondary-fixed-dim": "#c2c7cc",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed-dim": "#b1c5ff",
+                    "surface-container": "#efedee",
+                    "primary-fixed": "#d9e2ff",
+                    "secondary": "#5a5f63",
+                    "surface-bright": "#faf9fa",
+                    "on-primary-fixed-variant": "#00419d",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#f2f0f1",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#dcc661",
+                    "tertiary-container": "#bfab49",
+                    "inverse-primary": "#b1c5ff",
+                    "on-secondary-container": "#606569",
+                    "tertiary-fixed": "#f9e37a",
+                    "surface-variant": "#e3e2e3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "display": ["Noto Serif"],
+                    "body": ["Inter"],
+                    "label": ["Public Sans"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .fade-in { animation: fadeIn 1.5s ease-out forwards; opacity: 0; }
+        .slide-up { animation: slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(20px); }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-500 { animation-delay: 500ms; }
+        .delay-700 { animation-delay: 700ms; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface font-body min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container">
+<main class="flex-grow flex flex-col md:flex-row min-h-screen">
+<!-- Image Section (Hero Portrait) -->
+<div class="relative w-full h-[442px] md:h-screen md:w-1/2 overflow-hidden fade-in bg-surface-container-low">
+<img alt="Portrait of a scholarly curator" class="absolute inset-0 w-full h-full object-cover grayscale opacity-90 mix-blend-multiply" data-alt="A high-quality, striking monochrome portrait of a sophisticated, scholarly curator or expert in a minimalist, high-end editorial setting. The lighting is dramatic yet soft, casting elegant shadows that emphasize wisdom and authority. The aesthetic is strictly grayscale, clean, and modern, fitting perfectly with a pristine, light-mode, premium digital reading experience. No distracting backgrounds, just pure focus on the subject." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1q3KFg8C6NYsLRfClRDnq1kPHj-cl-anNli2gvRhTjRT4UvRv1Z5ZfTYDIiOyc-RJInh0fYZf924gwWYhXYJI44a1G4LpYQg1NoSv3x7x6gtYJH4DWXiiX5WDfSVqOFvBek0zgMUkDBm6RyJINPXnjk_BkAcK0wkWQWwxdpJYlx73SexoyJTaWo3EAFIA0ZbStsuSYAo5XpnZa_ZzUk5jBHhWD6mF2X8tjZfE6Am7M-F5BjIp-JogTmaZMfG6TaxJ_FjHdQcr9g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-surface-container-lowest/90"></div>
+<!-- Brand Badge Floating -->
+<div class="absolute top-8 left-8 slide-up delay-100 hidden md:block">
+<span class="font-headline text-2xl italic font-semibold text-on-surface">Alexandria</span>
+</div>
+</div>
+<!-- Content Section -->
+<div class="w-full md:w-1/2 flex flex-col justify-center px-8 py-12 md:px-16 lg:px-24 bg-surface-container-lowest relative z-10">
+<div class="max-w-md mx-auto w-full">
+<!-- Mobile Brand -->
+<div class="mb-12 slide-up delay-100 md:hidden">
+<span class="font-headline text-2xl italic font-semibold text-on-surface">Alexandria</span>
+</div>
+<div class="space-y-8">
+<h1 class="font-headline text-4xl md:text-5xl lg:text-6xl text-on-surface font-medium tracking-tight leading-tight slide-up delay-300">
+                        Welcome to <span class="italic text-primary">KiND</span>.
+                    </h1>
+<p class="font-body text-lg md:text-xl text-on-surface-variant leading-relaxed slide-up delay-500 font-light">
+                        Connect with the world's foremost authorities for bespoke critique and curation. A scholarly, premium reading experience awaits.
+                    </p>
+</div>
+<div class="mt-16 pt-8 slide-up delay-700">
+<button class="group w-full md:w-auto inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-label text-sm uppercase tracking-widest rounded-lg hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-0.5">
+<span class="mr-2 font-semibold">Get Started</span>
+<span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+<div class="mt-6 text-center md:text-left">
+<a class="inline-flex items-center font-label text-xs uppercase tracking-widest text-secondary hover:text-primary transition-colors border-b border-transparent hover:border-primary pb-1" href="#">
+                            Sign in to existing account
+                        </a>
+</div>
+</div>
+</div>
+<!-- Architectural Whitespace / Decorative Element -->
+<div class="absolute bottom-8 right-8 hidden md:block opacity-20 pointer-events-none">
+<span class="material-symbols-outlined text-6xl text-primary" style="font-variation-settings: 'FILL' 0;">architecture</span>
+</div>
+</div>
+</main>
+<script>
+        // Minimal interaction logic if needed for onboarding flow
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.querySelector('button');
+            btn.addEventListener('click', (e) => {
+                // Simulate transition to next state
+                document.body.style.opacity = '0';
+                document.body.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => {
+                    console.log('Transition to Hub/Dashboard');
+                }, 500);
+            });
+        });
+    </script>
+</body></html>

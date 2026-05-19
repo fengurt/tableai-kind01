@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+  <title data-i18n="meta.title">KiND — Expert Twin Marketplace</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Noto+Serif+SC:wght@400;500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-lowest": "#ffffff",
+            "outline": "#737784",
+            "secondary-container": "#dfe3e8",
+            "on-tertiary-fixed-variant": "#524600",
+            "primary": "#094cb2",
+            "surface-container-high": "#e9e8e9",
+            "on-tertiary-container": "#4a3f00",
+            "on-primary-container": "#e7ebff",
+            "on-surface": "#1b1c1d",
+            "secondary-fixed": "#dfe3e8",
+            "surface": "#faf9fa",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "tertiary": "#6d5e00",
+            "on-surface-variant": "#434653",
+            "surface-container-highest": "#e3e2e3",
+            "outline-variant": "#c3c6d5",
+            "on-primary-fixed": "#001946",
+            "on-background": "#1b1c1d",
+            "surface-container-low": "#f5f3f4",
+            "on-secondary-fixed-variant": "#42474b",
+            "on-secondary-fixed": "#171c20",
+            "error": "#ba1a1a",
+            "background": "#faf9fa",
+            "on-tertiary-fixed": "#211b00",
+            "inverse-surface": "#303031",
+            "surface-tint": "#2259bf",
+            "on-primary": "#ffffff",
+            "surface-dim": "#dbdadb",
+            "primary-container": "#3366cc",
+            "secondary-fixed-dim": "#c2c7cc",
+            "on-tertiary": "#ffffff",
+            "primary-fixed-dim": "#b1c5ff",
+            "surface-container": "#efedee",
+            "primary-fixed": "#d9e2ff",
+            "secondary": "#5a5f63",
+            "surface-bright": "#faf9fa",
+            "on-primary-fixed-variant": "#00419d",
+            "on-error": "#ffffff",
+            "inverse-on-surface": "#f2f0f1",
+            "error-container": "#ffdad6",
+            "tertiary-fixed-dim": "#dcc661",
+            "tertiary-container": "#bfab49",
+            "inverse-primary": "#b1c5ff",
+            "on-secondary-container": "#606569",
+            "tertiary-fixed": "#f9e37a",
+            "surface-variant": "#e3e2e3"
+          },
+          borderRadius: { DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem" },
+          fontFamily: {
+            headline: ["Noto Serif", "serif"],
+            display: ["Noto Serif", "serif"],
+            body: ["Inter", "sans-serif"],
+            label: ["Public Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    .filled-icon { font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    .pb-safe { padding-bottom: env(safe-area-inset-bottom, 20px); }
+    .pt-safe { padding-top: env(safe-area-inset-top, 20px); }
+    body { min-height: max(884px, 100dvh); -webkit-tap-highlight-color: transparent; }
+    ::-webkit-scrollbar { display: none; }
+    * { -ms-overflow-style: none; scrollbar-width: none; }
+    .ghost-border { box-shadow: inset 0 0 0 1px rgba(195, 198, 213, 0.15); }
+    .progress-ring__circle { transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1); transform: rotate(-90deg); transform-origin: 50% 50%; }
+    #app > .screen { display: none; min-height: 100dvh; }
+    #app > .screen.active { display: block; position: relative; z-index: 1; animation: screenIn 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+    #app > .screen.welcome-active { display: flex; flex-direction: column; position: relative; z-index: 1; }
+    @media (min-width: 768px) { #app > .screen.welcome-active { flex-direction: row; } }
+    @keyframes screenIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { animation: fadeIn 1.2s ease-out forwards; opacity: 0; }
+    .slide-up { animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(16px); }
+    .delay-100 { animation-delay: 100ms; }
+    .delay-200 { animation-delay: 200ms; }
+    .delay-300 { animation-delay: 300ms; }
+    .delay-500 { animation-delay: 500ms; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+    .step-dot { transition: all 0.3s ease; }
+    .step-dot.active { background: #094cb2; transform: scale(1.2); }
+    .brief-panel { display: none; }
+    .brief-panel.active { display: block; animation: slideUp 0.35s ease forwards; }
+    .inbox-item.expanded .inbox-detail { display: block; }
+    .inbox-detail { display: none; }
+    .request-card.expanded .request-feedback { display: block; }
+    .request-feedback { display: none; }
+    .vault-tab.active { background: #094cb2; color: #fff; }
+    .training-tab.active { background: #094cb2; color: #fff; }
+    .filter-chip.active { background: #efedee; color: #1b1c1d; }
+    .nav-hidden { display: none !important; }
+    .toast { transform: translateY(100px); opacity: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    html[lang="zh"] .font-headline, html[lang="zh"] .font-display { font-family: "Noto Serif SC", "Noto Serif", serif; }
+    html[lang="zh"] .font-body { font-family: "Inter", "PingFang SC", "Microsoft YaHei", sans-serif; }
+    #lang-switch { top: max(0.75rem, env(safe-area-inset-top, 0.75rem)); }
+    .lang-btn.active { background: #094cb2; color: #fff; }
+    .app-header { padding-right: 5.5rem; }
+    @media (min-width: 768px) { .app-header { padding-right: 6.5rem; } }
+    .card-elevated { background: linear-gradient(145deg, #ffffff 0%, #f5f3f4 100%); }
+    .success-shell { min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 6rem 1.5rem 3rem; text-align: center; position: relative; overflow: hidden; }
+    .success-shell::before { content: ""; position: absolute; top: -20%; left: 50%; transform: translateX(-50%); width: 120%; height: 50%; background: radial-gradient(ellipse, rgba(217, 226, 255, 0.5) 0%, transparent 70%); pointer-events: none; }
+    .success-icon { width: 5.5rem; height: 5.5rem; border-radius: 9999px; background: #f5f3f4; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+  @keyframes scaleIn { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .journey-step { flex: 1; text-align: center; }
+    .journey-step .dot { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: #c3c6d5; margin: 0 auto 0.5rem; }
+    .journey-step.active .dot { background: #094cb2; box-shadow: 0 0 0 4px rgba(9, 76, 178, 0.15); }
+    .journey-step.done .dot { background: #6d5e00; }
+    .journey-line { flex: 1; height: 2px; background: #e3e2e3; margin-top: 0.2rem; max-width: 2rem; }
+    .journey-step.done + .journey-line { background: linear-gradient(90deg, #bfab49, #c3c6d5); }
+    .stat-pill { background: #f5f3f4; border-radius: 0.5rem; padding: 0.75rem 0.5rem; }
+    .hire-cta { background: linear-gradient(135deg, #094cb2 0%, #3366cc 100%); color: #fff; padding: 0.65rem 1.25rem; border-radius: 0.5rem; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .role-btn { border: 1px solid transparent; }
+    .role-btn:hover { border-color: rgba(9, 76, 178, 0.2); }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased selection:bg-primary-container selection:text-on-primary-container">
+
+<!-- Language toggle (global) -->
+<div id="lang-switch" class="fixed right-4 z-[70] flex gap-0.5 bg-surface-container-lowest/90 backdrop-blur-xl rounded-full p-1 ghost-border shadow-[0_8px_24px_rgba(27,28,29,0.06)]">
+  <button type="button" data-lang="en" class="lang-btn active px-3 py-1.5 rounded-full font-label text-[10px] uppercase tracking-widest transition-all" aria-pressed="true">EN</button>
+  <button type="button" data-lang="zh" class="lang-btn px-3 py-1.5 rounded-full font-label text-[10px] uppercase tracking-widest text-on-surface-variant transition-all" aria-pressed="false">中文</button>
+</div>
+
+<div id="app" class="relative min-h-screen">
+
+  <!-- ========== WELCOME ========== -->
+  <section id="screen-welcome" class="screen welcome-active min-h-screen flex flex-col md:flex-row" data-screen="welcome">
+    <div class="relative w-full h-[40vh] md:h-screen md:w-1/2 overflow-hidden fade-in bg-surface-container-low">
+      <img alt="Scholarly curator" class="absolute inset-0 w-full h-full object-cover grayscale opacity-90 mix-blend-multiply"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1q3KFg8C6NYsLRfClRDnq1kPHj-cl-anNli2gvRhTjRT4UvRv1Z5ZfTYDIiOyc-RJInh0fYZf924gwWYhXYJI44a1G4LpYQg1NoSv3x7x6gtYJH4DWXiiX5WDfSVqOFvBek0zgMUkDBm6RyJINPXnjk_BkAcK0wkWQWwxdpJYlx73SexoyJTaWo3EAFIA0ZbStsuSYAo5XpnZa_ZzUk5jBHhWD6mF2X8tjZfE6Am7M-F5BjIp-JogTmaZMfG6TaxJ_FjHdQcr9g"/>
+      <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-surface-container-lowest/90"></div>
+      <div class="absolute top-8 left-8 slide-up delay-100 hidden md:block">
+        <span class="font-headline text-2xl italic font-semibold text-on-surface">KiND</span>
+      </div>
+    </div>
+    <div class="w-full md:w-1/2 flex flex-col justify-center px-8 py-10 md:px-16 lg:px-24 bg-surface-container-lowest relative z-10 flex-1">
+      <div class="max-w-md mx-auto w-full">
+        <div class="mb-8 slide-up delay-100 md:hidden">
+          <span class="font-headline text-2xl italic font-semibold text-on-surface">KiND</span>
+        </div>
+        <div class="space-y-6">
+          <h1 class="font-headline text-3xl md:text-5xl text-on-surface font-medium tracking-tight leading-tight slide-up delay-200" data-i18n-html="welcome.headline">Knowledge, <span class="italic text-primary">Instilled</span>.</h1>
+          <p class="font-body text-base md:text-lg text-on-surface-variant leading-relaxed slide-up delay-300 font-light" data-i18n="welcome.subtitle">Train your digital twin. Or hire the world's foremost authorities for bespoke critique and curation.</p>
+        </div>
+        <p class="font-label text-[10px] tracking-[0.2em] text-tertiary uppercase mt-8 slide-up delay-300" data-i18n="welcome.howItWorks">How KiND works</p>
+        <div class="grid grid-cols-3 gap-2 mt-3 slide-up delay-300">
+          <div class="stat-pill text-center"><span class="font-headline text-lg text-primary block">01</span><span class="font-label text-[9px] uppercase tracking-wider text-on-surface-variant" data-i18n="welcome.step1">Train</span></div>
+          <div class="stat-pill text-center"><span class="font-headline text-lg text-primary block">02</span><span class="font-label text-[9px] uppercase tracking-wider text-on-surface-variant" data-i18n="welcome.step2">Verify</span></div>
+          <div class="stat-pill text-center"><span class="font-headline text-lg text-primary block">03</span><span class="font-label text-[9px] uppercase tracking-wider text-on-surface-variant" data-i18n="welcome.step3">Deliver</span></div>
+        </div>
+        <div class="mt-8 space-y-4 slide-up delay-500">
+          <button data-role="expert" class="role-btn card-elevated w-full flex items-center gap-4 p-5 bg-surface-container-low rounded-xl hover:bg-surface-container transition-all group text-left">
+            <span class="material-symbols-outlined text-primary text-2xl">psychology</span>
+            <div class="flex-1">
+              <span class="font-label text-[10px] tracking-widest text-primary uppercase block mb-1" data-i18n="welcome.expertBadge">Expert</span>
+              <span class="font-headline text-lg text-on-surface" data-i18n="welcome.expertTitle">Train my Digital Twin</span>
+              <p class="font-body text-sm text-on-surface-variant mt-1" data-i18n="welcome.expertDesc">Upload knowledge, pass tests, publish to marketplace</p>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          </button>
+          <button data-role="client" class="role-btn card-elevated w-full flex items-center gap-4 p-5 bg-surface-container-low rounded-xl hover:bg-surface-container transition-all group text-left">
+            <span class="material-symbols-outlined text-tertiary text-2xl filled-icon">auto_awesome</span>
+            <div class="flex-1">
+              <span class="font-label text-[10px] tracking-widest text-tertiary uppercase block mb-1" data-i18n="welcome.seekerBadge">Seeker</span>
+              <span class="font-headline text-lg text-on-surface" data-i18n="welcome.seekerTitle">Explore KiND</span>
+              <p class="font-body text-sm text-on-surface-variant mt-1" data-i18n="welcome.seekerDesc">Post a brief, hire experts, receive professional feedback</p>
+            </div>
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          </button>
+        </div>
+        <p class="mt-8 text-center font-label text-xs uppercase tracking-widest text-secondary slide-up delay-500">
+          <button id="switch-role-hint" class="hover:text-primary transition-colors border-b border-transparent hover:border-primary pb-0.5" data-i18n="welcome.signIn">Already have an account? Sign in</button>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EXPERT HUB ========== -->
+  <section id="screen-e-hub" class="screen pb-36" data-screen="e-hub" data-role="expert">
+    <header class="app-header fixed top-0 w-full z-40 flex justify-between items-center px-6 py-4 bg-surface-container-lowest/80 backdrop-blur-xl pt-safe">
+      <img alt="Avatar" class="w-10 h-10 rounded-full object-cover ghost-border" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDoJ7EoDEnwKo32FEbTHz1Nvfye4c0y8SC4WrmXQxtibr0lMvYD1ma5W5CSZ4Pi3H7gehwlUXKs9r2Yysk5tz4VI6vw4mdItdSRY5SHySaKGmRTHwgqW0rG0aiq-dk9OYGlRfQ7SrAO2R_B6t6SHsQcX_QUDID2opktlCcJNzT-7FKBg7e5aoajVY0ciSiLk9k_8dxOttHEg725myu40hd_7tsClILSjPqSYArHV8rnw9q3rJQUcyf1tI7I7qzdVWPsrJR726Psg"/>
+      <div class="flex flex-col items-center">
+        <h1 class="font-headline text-2xl italic font-semibold text-on-surface">KiND</h1>
+        <span class="font-label text-[10px] tracking-widest text-on-surface-variant uppercase mt-0.5" data-i18n-key="hub">Expert Hub</span>
+      </div>
+      <button class="nav-to text-on-surface-variant hover:text-primary" data-target="welcome" aria-label="Switch role">
+        <span class="material-symbols-outlined">swap_horiz</span>
+      </button>
+    </header>
+    <main class="max-w-3xl mx-auto pt-24 pb-8 px-6 flex flex-col gap-8">
+      <div class="bg-primary-fixed/40 border border-primary/15 rounded-xl p-4 flex gap-3 items-start card-elevated">
+        <span class="material-symbols-outlined text-primary text-2xl filled-icon shrink-0">rocket_launch</span>
+        <div>
+          <p class="font-label text-[10px] tracking-widest text-primary uppercase" data-i18n-key="readyBadge">Almost marketplace-ready</p>
+          <p class="font-body text-sm text-on-surface-variant mt-1" data-i18n-key="readyDesc">84% synchronized — one pressure test away from publish.</p>
+        </div>
+      </div>
+      <div class="flex items-start justify-between w-full max-w-sm mx-auto px-1">
+        <div class="journey-step done"><div class="dot"></div><span class="font-label text-[9px] uppercase tracking-wider text-on-surface-variant block mt-2" data-i18n-key="journeyTrain">Train</span></div>
+        <div class="journey-line"></div>
+        <div class="journey-step done"><div class="dot"></div><span class="font-label text-[9px] uppercase tracking-wider text-on-surface-variant block mt-2" data-i18n-key="journeyTest">Test</span></div>
+        <div class="journey-line"></div>
+        <div class="journey-step active"><div class="dot"></div><span class="font-label text-[9px] uppercase tracking-wider text-primary block mt-2" data-i18n-key="journeyPublish">Publish</span></div>
+      </div>
+      <article class="bg-surface-container-low rounded-xl p-6 flex flex-col gap-4 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-surface-container-low to-surface-container-lowest opacity-60 pointer-events-none"></div>
+        <div class="flex items-start justify-between relative z-10">
+          <div>
+            <span class="font-label text-xs tracking-widest text-primary uppercase" data-i18n-key="twinProfile">Digital Twin Profile</span>
+            <h2 class="font-headline text-2xl font-medium text-on-surface mt-1">Dr. Julian Vance</h2>
+            <p class="font-body text-sm text-on-surface-variant mt-2 max-w-sm" data-i18n-key="twinBio">Curator of Antiquities — Hellenistic artifacts and early computational mechanisms.</p>
+          </div>
+          <div class="w-20 h-24 rounded-lg overflow-hidden bg-surface-container-high shrink-0">
+            <img alt="Dr. Julian Vance" class="w-full h-full object-cover mix-blend-multiply grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVjbImO9TbF5uFtLh2RZYbYS-0PRdmlv02gjR5YeNR4-MHT_2UXKTKDJTIO51PKJOU6jaQtom8rehNPkAYWlDJK6jd0Z70bPNsyCa4rVTtOGh6TyJpwulLVOPzWROJL_VUrkKJkgyCaWE469o5t4QgiEpovJ5ruosPaVcnfyEQ8Fnn065ERskPZhD1jzd3cYfaKRAXXZ4u3TPgBhNdnzEc_16gBPkrW2kEz2bUqwsqoztEPEzHW7eOJHJHDV7FbLoHX4zIeiamHA"/>
+          </div>
+        </div>
+      </article>
+      <section class="flex flex-col items-center gap-6 py-2">
+        <div class="relative w-56 h-56 flex items-center justify-center">
+          <svg class="w-full h-full absolute inset-0" viewBox="0 0 120 120">
+            <circle class="text-surface-variant" cx="60" cy="60" fill="none" r="54" stroke="currentColor" stroke-width="2"/>
+            <circle id="progress-ring" class="text-primary progress-ring__circle" cx="60" cy="60" fill="none" r="54" stroke="currentColor" stroke-dasharray="339.292" stroke-dashoffset="339.292" stroke-width="2"/>
+          </svg>
+          <div class="flex flex-col items-center justify-center text-center z-10 bg-surface-container-lowest w-40 h-40 rounded-full shadow-[0_0_40px_rgba(0,0,0,0.04)] ghost-border">
+            <span id="progress-pct" class="font-headline text-4xl text-on-surface tracking-tight">0%</span>
+            <span class="font-label text-xs text-on-surface-variant tracking-widest uppercase mt-1" data-i18n-key="synchronized">Synchronized</span>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 w-full">
+          <div class="bg-surface-container-low rounded-lg p-5 flex flex-col items-center text-center">
+            <span class="material-symbols-outlined text-tertiary mb-2 filled-icon">database</span>
+            <span class="font-label text-[10px] text-on-surface-variant tracking-widest uppercase mb-1" data-i18n-key="knowledgeBase">Knowledge Base</span>
+            <span class="font-headline text-lg text-on-surface">12.4M Tokens</span>
+          </div>
+          <div class="bg-surface-container-low rounded-lg p-5 flex flex-col items-center text-center">
+            <span class="material-symbols-outlined text-tertiary mb-2 filled-icon">psychology</span>
+            <span class="font-label text-[10px] text-on-surface-variant tracking-widest uppercase mb-1" data-i18n-key="personaDepth">Persona Depth</span>
+            <span class="font-headline text-lg text-on-surface">Level 9</span>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="flex justify-between items-end mb-4 pb-3 bg-gradient-to-r from-transparent to-surface-container-low">
+          <h3 class="font-headline text-xl text-on-surface" data-i18n-key="pressureTests">Pressure Tests</h3>
+          <button class="nav-to font-label text-xs tracking-widest text-primary uppercase" data-target="e-training" data-i18n-key="viewAll">View All</button>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center justify-between py-4 bg-surface-container-low/50 hover:bg-surface-container-low px-3 -mx-3 rounded-lg transition-colors">
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+              <div>
+                <span class="font-body text-sm font-medium text-on-surface" data-i18n-key="test1">Context Retrieval Anomaly</span>
+                <span class="font-label text-[10px] text-on-surface-variant block mt-0.5">Oct 24, 09:41 AM</span>
+              </div>
+            </div>
+            <span class="font-label text-xs tracking-wider text-primary" data-i18n-key="success">SUCCESS</span>
+          </div>
+          <div class="h-px bg-surface-variant/40"></div>
+          <div class="flex items-center justify-between py-4 hover:bg-surface-container-low px-3 -mx-3 rounded-lg transition-colors">
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-tertiary text-sm mt-0.5">sync</span>
+              <div>
+                <span class="font-body text-sm font-medium text-on-surface" data-i18n-key="test2">Tone Consistency: Debate Mode</span>
+                <span class="font-label text-[10px] text-on-surface-variant block mt-0.5">Oct 24, 08:15 AM</span>
+              </div>
+            </div>
+            <span class="font-label text-xs tracking-wider text-tertiary" data-i18n-key="refining">REFINING</span>
+          </div>
+          <div class="h-px bg-surface-variant/40"></div>
+          <div class="flex items-center justify-between py-4 hover:bg-surface-container-low px-3 -mx-3 rounded-lg transition-colors">
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+              <div>
+                <span class="font-body text-sm font-medium text-on-surface" data-i18n-key="test3">Edge Case: Philosophical Paradox</span>
+                <span class="font-label text-[10px] text-on-surface-variant block mt-0.5">Oct 23, 14:20 PM</span>
+              </div>
+            </div>
+            <span class="font-label text-xs tracking-wider text-primary" data-i18n-key="success">SUCCESS</span>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="fixed bottom-[4.5rem] left-0 right-0 z-[55] px-6 bg-gradient-to-t from-background via-background to-transparent pt-4 pb-2 pointer-events-none">
+      <button id="publish-btn" class="pointer-events-auto w-full max-w-3xl mx-auto flex items-center justify-center gap-3 bg-gradient-to-r from-primary to-primary-container text-on-primary py-4 px-8 rounded-lg shadow-[0_8px_24px_rgba(9,76,178,0.2)] hover:shadow-xl transition-all group">
+        <span class="font-headline text-lg">Publish to Marketplace</span>
+        <span class="material-symbols-outlined text-tertiary-fixed group-hover:translate-x-1 transition-transform">arrow_forward</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ========== EXPERT TRAINING ========== -->
+  <section id="screen-e-training" class="screen pb-28" data-screen="e-training" data-role="expert">
+    <header class="app-header fixed top-0 w-full z-40 flex items-center gap-4 px-6 py-4 bg-surface-container-lowest/80 backdrop-blur-xl pt-safe">
+      <button class="nav-to text-on-surface-variant hover:text-primary" data-back="true" data-target="e-hub" aria-label="Back"><span class="material-symbols-outlined">arrow_back</span></button>
+      <h1 class="font-headline text-xl text-on-surface flex-1">Training Center</h1>
+    </header>
+    <main class="max-w-3xl mx-auto pt-24 px-6 space-y-8">
+      <div class="flex gap-2 p-1 bg-surface-container-low rounded-lg">
+        <button class="training-tab active flex-1 py-2.5 rounded-md font-label text-xs uppercase tracking-widest transition-all" data-tab="training">In Training</button>
+        <button class="training-tab flex-1 py-2.5 rounded-md font-label text-xs uppercase tracking-widest text-on-surface-variant transition-all" data-tab="ready">Ready</button>
+      </div>
+      <div id="panel-training" class="space-y-8">
+        <div class="border-2 border-dashed border-outline-variant/30 rounded-xl p-10 flex flex-col items-center text-center bg-surface-container-low/50 hover:bg-surface-container-low transition-colors cursor-pointer" id="upload-zone">
+          <span class="material-symbols-outlined text-4xl text-primary mb-4">cloud_upload</span>
+          <h3 class="font-headline text-lg text-on-surface mb-2">Upload Knowledge</h3>
+          <p class="font-body text-sm text-on-surface-variant max-w-xs">PDFs, manuscripts, lecture notes — drag here or tap to browse</p>
+          <span class="font-label text-[10px] tracking-widest text-tertiary uppercase mt-4">Supports up to 50MB per file</span>
+        </div>
+        <section class="space-y-4">
+          <h3 class="font-headline text-lg text-on-surface">Active Modules</h3>
+          <div class="bg-surface-container-low rounded-xl p-5 space-y-4">
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-body text-sm font-medium">Voice & Tone Calibration</span>
+                <span class="font-label text-xs text-primary">72%</span>
+              </div>
+              <div class="h-1.5 bg-surface-variant rounded-full overflow-hidden"><div class="h-full bg-primary rounded-full" style="width:72%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-body text-sm font-medium">Domain Corpus Ingestion</span>
+                <span class="font-label text-xs text-primary">91%</span>
+              </div>
+              <div class="h-1.5 bg-surface-variant rounded-full overflow-hidden"><div class="h-full bg-primary rounded-full" style="width:91%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-body text-sm font-medium">Reasoning Pattern Mapping</span>
+                <span class="font-label text-xs text-tertiary">34%</span>
+              </div>
+              <div class="h-1.5 bg-surface-variant rounded-full overflow-hidden"><div class="h-full bg-tertiary rounded-full" style="width:34%"></div></div>
+            </div>
+          </div>
+        </section>
+        <button class="w-full py-4 bg-surface-container-high text-on-surface font-label text-sm uppercase tracking-widest rounded-lg hover:bg-surface-container transition-colors">
+          Run Pressure Test
+        </button>
+      </div>
+      <div id="panel-ready" class="hidden space-y-4">
+        <div class="bg-surface-container-low rounded-xl p-6 flex items-center gap-4">
+          <span class="material-symbols-outlined text-primary text-3xl filled-icon">verified</span>
+          <div>
+            <h3 class="font-headline text-lg text-on-surface">Twin Ready for Review</h3>
+            <p class="font-body text-sm text-on-surface-variant mt-1">All core modules passed. Schedule final assessment.</p>
+          </div>
+        </div>
+        <button id="ready-publish" class="w-full py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline rounded-lg">Proceed to Publish</button>
+      </div>
+    </main>
+  </section>
+
+  <!-- ========== EXPERT INBOX ========== -->
+  <section id="screen-e-inbox" class="screen pb-28" data-screen="e-inbox" data-role="expert">
+    <header class="app-header fixed top-0 w-full z-40 flex justify-between items-center px-6 py-4 bg-surface-container-lowest/80 backdrop-blur-xl pt-safe">
+      <h1 class="font-headline text-xl text-on-surface">Requests</h1>
+      <span class="font-label text-xs bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full">3 New</span>
+    </header>
+    <main class="max-w-3xl mx-auto pt-24 px-6 space-y-4">
+      <div class="inbox-item bg-surface-container-low rounded-xl overflow-hidden cursor-pointer" data-expand>
+        <div class="p-5 flex justify-between items-start">
+          <div>
+            <span class="font-label text-[10px] tracking-widest text-primary uppercase bg-primary-fixed/30 px-2 py-0.5 rounded">New</span>
+            <h3 class="font-headline text-lg text-on-surface mt-2">Manuscript Provenance Review</h3>
+            <p class="font-body text-sm text-on-surface-variant mt-1">From Elena M. · €280 · Due in 48h</p>
+          </div>
+          <span class="material-symbols-outlined text-on-surface-variant expand-icon">expand_more</span>
+        </div>
+        <div class="inbox-detail px-5 pb-5 border-t border-outline-variant/10">
+          <p class="font-body text-sm text-on-surface-variant leading-relaxed mt-4">18th-century European manuscript — need authentication of marginalia and chain of custody assessment.</p>
+          <div class="flex gap-3 mt-4">
+            <button class="flex-1 py-3 bg-gradient-to-r from-primary to-primary-container text-on-primary font-label text-xs uppercase tracking-widest rounded-lg">Accept Brief</button>
+            <button class="py-3 px-4 bg-surface-container-high text-on-surface-variant font-label text-xs uppercase tracking-widest rounded-lg">Decline</button>
+          </div>
+        </div>
+      </div>
+      <div class="inbox-item bg-surface-container-low rounded-xl overflow-hidden cursor-pointer" data-expand>
+        <div class="p-5 flex justify-between items-start">
+          <div>
+            <span class="font-label text-[10px] tracking-widest text-tertiary uppercase">In Progress</span>
+            <h3 class="font-headline text-lg text-on-surface mt-2">Architectural Critique — Brutalist Wing</h3>
+            <p class="font-body text-sm text-on-surface-variant mt-1">From James K. · €350</p>
+          </div>
+          <span class="material-symbols-outlined text-on-surface-variant expand-icon">expand_more</span>
+        </div>
+        <div class="inbox-detail px-5 pb-5">
+          <textarea class="w-full mt-4 bg-surface-container-lowest rounded-lg p-4 font-body text-sm ghost-border focus:ring-0 focus:outline-none focus:shadow-[inset_0_0_0_2px_#094cb2]" rows="3" placeholder="Draft your scholarly response..."></textarea>
+          <button class="mt-3 w-full py-3 bg-primary text-on-primary font-label text-xs uppercase tracking-widest rounded-lg">Send Response</button>
+        </div>
+      </div>
+      <div class="inbox-item bg-surface-container-low rounded-xl p-5 opacity-80">
+        <span class="font-label text-[10px] tracking-widest text-secondary uppercase">Delivered</span>
+        <h3 class="font-headline text-lg text-on-surface mt-2">Fine Art Portfolio Review</h3>
+        <p class="font-body text-sm text-on-surface-variant mt-1">Completed Oct 22 · €250 earned</p>
+      </div>
+    </main>
+  </section>
+
+  <!-- ========== EXPERT VAULT ========== -->
+  <section id="screen-e-vault" class="screen pb-28" data-screen="e-vault" data-role="expert">
+    <header class="app-header fixed top-0 w-full z-40 px-6 py-4 bg-surface-container-lowest/80 backdrop-blur-xl pt-safe">
+      <h1 class="font-headline text-xl text-on-surface">Knowledge Vault</h1>
+      <p class="font-label text-[10px] tracking-widest text-on-surface-variant uppercase mt-1">Content Assets</p>
+    </header>
+    <main class="max-w-3xl mx-auto pt-24 px-6 space-y-8">
+      <div class="bg-gradient-to-br from-primary-fixed/40 to-surface-container-low rounded-xl p-6 flex justify-between items-center">
+        <div>
+          <span class="font-label text-[10px] tracking-widest text-on-surface-variant uppercase" data-i18n-key="totalRevenue">Total Revenue</span>
+          <p class="font-headline text-3xl text-on-surface mt-1">€12,480</p>
+          <span class="font-body text-sm text-primary" data-i18n-key="revenueGrowth">+18% this month</span>
+        </div>
+        <span class="material-symbols-outlined text-4xl text-tertiary filled-icon">savings</span>
+      </div>
+      <div class="flex gap-2 p-1 bg-surface-container-low rounded-lg">
+        <button class="vault-tab active flex-1 py-2 rounded-md font-label text-xs uppercase tracking-widest" data-vault="active">Active</button>
+        <button class="vault-tab flex-1 py-2 rounded-md font-label text-xs uppercase tracking-widest text-on-surface-variant" data-vault="archived">Archived</button>
+      </div>
+      <div id="vault-active" class="grid grid-cols-2 gap-4">
+        <article class="bg-surface-container-low rounded-xl p-4 flex flex-col">
+          <span class="font-label text-[10px] text-tertiary uppercase tracking-wider">€890/mo</span>
+          <h4 class="font-headline text-base text-on-surface mt-2 leading-snug">Antiquities Assessment</h4>
+          <p class="font-body text-xs text-on-surface-variant mt-2 flex-1">47 sessions · 4.9★</p>
+          <span class="mt-3 inline-flex items-center gap-1 text-primary font-label text-[10px] uppercase" data-i18n-key="live"><span class="w-2 h-2 rounded-full bg-primary"></span> Live</span>
+        </article>
+        <article class="bg-surface-container-low rounded-xl p-4 flex flex-col">
+          <span class="font-label text-[10px] text-tertiary uppercase tracking-wider">€420/mo</span>
+          <h4 class="font-headline text-base text-on-surface mt-2 leading-snug">Debate Mode Critique</h4>
+          <p class="font-body text-xs text-on-surface-variant mt-2 flex-1">23 sessions · 4.8★</p>
+          <span class="mt-3 inline-flex items-center gap-1 text-primary font-label text-[10px] uppercase" data-i18n-key="live"><span class="w-2 h-2 rounded-full bg-primary"></span> Live</span>
+        </article>
+        <article class="bg-surface-container-low rounded-xl p-4 flex flex-col col-span-2">
+          <span class="font-label text-[10px] text-tertiary uppercase tracking-wider">€1,240/mo</span>
+          <h4 class="font-headline text-base text-on-surface mt-2">Full Manuscript Review Package</h4>
+          <p class="font-body text-xs text-on-surface-variant mt-2">Premium tier · 12 active subscribers</p>
+        </article>
+      </div>
+      <div id="vault-archived" class="hidden text-center py-12 text-on-surface-variant font-body text-sm">No archived assets yet.</div>
+    </main>
+  </section>
+
+  <!-- ========== CLIENT MARKET ========== -->
+  <section id="screen-c-market" class="screen pb-28" data-screen="c-market" data-role="client">
+    <header class="app-header fixed top-0 w-full z-40 flex justify-between items-center px-6 py-4 bg-surface-container-lowest/80 backdrop-blur-xl pt-safe">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full overflow-hidden bg-surface-variant">
+          <img alt="You" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTDWwxRM2RMR4JW9nGbSmcjKxdFfpnUDtQQMYyKZWyHN9TFLMVKREG5B-xh_1xXSTRfMgubWE2w_u9LiNstXZdNKzIFYru9htlY2s8NFo86Qnj1Ca_TULGQbP7uWcKzINT7chGntJyaeUL_z6-q6PnO9NvmWIXiBIdO2mOkCv6LUEzul4X_Y6GJKGzTP6Kkqr4MiFqQlrUNe9SD0cVF9YZWvqMV0PaBv3oEGY-JDwLOUzlcWiT9r10UBcgAZTZYLSlsqdlgGW0dg"/>
+        </div>
+        <h1 class="font-headline text-2xl italic font-semibold text-on-surface">KiND</h1>
+      </div>
+      <button class="nav-to text-on-surface-variant hover:text-primary" data-target="welcome"><span class="material-symbols-outlined">swap_horiz</span></button>
+    </header>
+    <main class="max-w-3xl mx-auto pt-24 px-6 space-y-8">
+      <div class="relative">
+        <input type="search" placeholder="Search expertise, mentors, topics..." class="w-full bg-transparent border-0 border-b border-outline-variant/40 focus:border-primary focus:ring-0 px-0 py-3 font-body text-lg placeholder:text-on-surface-variant/50"/>
+        <span class="material-symbols-outlined absolute right-0 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+      </div>
+      <div class="grid grid-cols-3 gap-2">
+        <div class="stat-pill text-center py-3">
+          <span class="font-headline text-xl text-primary block" data-i18n="client.statExpertsNum">127+</span>
+          <span class="font-label text-[9px] uppercase tracking-wider text-on-surface-variant" data-i18n="client.statExperts">Verified experts</span>
+        </div>
+        <div class="stat-pill text-center py-3">
+          <span class="font-headline text-xl text-primary block" data-i18n="client.statReviewsNum">2.4k</span>
+          <span class="font-label text-[9px] uppercase tracking-wider text-on-surface-variant" data-i18n="client.statReviews">Reviews delivered</span>
+        </div>
+        <div class="stat-pill text-center py-3">
+          <span class="font-headline text-xl text-primary block" data-i18n="client.statResponseNum">24h</span>
+          <span class="font-label text-[9px] uppercase tracking-wider text-on-surface-variant" data-i18n="client.statResponse">Avg. response</span>
+        </div>
+      </div>
+      <div class="flex gap-3 overflow-x-auto pb-1">
+        <button class="filter-chip active px-4 py-2 rounded-full bg-surface-container text-on-surface text-sm font-label whitespace-nowrap">Fine Art</button>
+        <button class="filter-chip px-4 py-2 rounded-full bg-transparent ghost-border text-on-surface-variant text-sm font-label whitespace-nowrap">Architecture</button>
+        <button class="filter-chip px-4 py-2 rounded-full bg-transparent ghost-border text-on-surface-variant text-sm font-label whitespace-nowrap">Literature</button>
+        <button class="filter-chip px-4 py-2 rounded-full bg-transparent ghost-border text-on-surface-variant text-sm font-label whitespace-nowrap">Philosophy</button>
+      </div>
+      <section class="relative rounded-xl overflow-hidden bg-surface-container-high p-8 min-h-[240px] flex flex-col justify-between">
+        <div class="relative z-10 max-w-[85%]">
+          <h2 class="font-headline text-2xl font-medium text-on-surface leading-snug mb-3">Seek Perfection.<br/>Find your Mentor.</h2>
+          <p class="font-body text-on-surface-variant text-sm mb-6">Connect with global authorities for critique and curation.</p>
+          <button class="nav-to self-start bg-gradient-to-r from-primary to-primary-container text-on-primary px-6 py-3 rounded-lg font-label text-sm tracking-wide" data-target="c-brief">Create Brief</button>
+        </div>
+      </section>
+      <section class="space-y-6">
+        <h3 class="font-headline text-xl text-on-surface pb-2 bg-gradient-to-r from-surface-variant/50 to-transparent">Featured Mentors</h3>
+        <article class="expert-card group flex gap-6 cursor-pointer" data-expert="elena">
+          <div class="w-24 h-32 rounded-lg bg-surface-variant shrink-0 overflow-hidden">
+            <img alt="Prof. Elena Rossi" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLaKhFuR8HJ62XgApE7zS3q3V5szzHVf4WGGD1qJJQ9WBDAW97yPxpVOM2GBS-BGwIcBe7-q4eESXaZYwvY6ARkDBsVdrcHc7qdCJliCXlYEucUz_MRirP5IOznDSmf36x8vpiXKzmSS4O2p6Lv6tWAY2rKmKPC6N0iA-S2MhXr2VP8Ssaz_HNRDA9cY3twAY4iGJ8wtHy_f1JlbWIIaIJBbWKCnw8JaubuDyTcJCqFv03VMa5SuuXeW29dUsSs_ItPJa24eBMCg"/>
+          </div>
+          <div class="flex flex-col justify-center flex-1">
+            <div class="flex items-center gap-1 text-tertiary mb-1">
+              <span class="material-symbols-outlined text-sm filled-icon">star</span>
+              <span class="font-label text-xs tracking-wider uppercase">Top Authority</span>
+            </div>
+            <h4 class="font-headline text-lg font-medium text-on-surface">Prof. Elena Rossi</h4>
+            <p class="font-body text-sm text-on-surface-variant mb-3">Fine Art Curator</p>
+            <div class="flex items-center justify-between">
+              <span class="font-label text-sm text-on-surface">€250 / Review</span>
+              <button class="hire-btn text-primary font-label text-sm tracking-wide underline underline-offset-4" data-expert="elena">Hire</button>
+            </div>
+          </div>
+        </article>
+        <article class="expert-card group flex gap-6 cursor-pointer" data-expert="julian">
+          <div class="w-24 h-32 rounded-lg bg-surface-variant shrink-0 overflow-hidden">
+            <img alt="Dr. Julian Hayes" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ7SXBOxArgSziyP3zmqkHtkhsAUJiMl6p6zverWPMyNuukNIx3d0MwtqXNlIX46thw4MPGnVsvNODLygjUWzzsJ4qCTYpq1cacv_JI3zdbmmDIzGwb8I2LNOG3j5uaAL_OcboPZ3pqZOyZg2kefS9KBPzuWYQ2AsxoMg57im52CVwm56Mp57f37mdt4e5_fjkmOWoGbL-yl4JaTMVjpPfI1HR2dKZbE7xiR72wpxj206Ua8Hyt95G1XCuGWuOB4vxfQGnZnkjZQ"/>
+          </div>
+          <div class="flex flex-col justify-center flex-1">
+            <h4 class="font-headline text-lg font-medium text-on-surface">Dr. Julian Hayes</h4>
+            <p class="font-body text-sm text-on-surface-variant mb-3">Architectural Historian</p>
+            <div class="flex items-center justify-between">
+              <span class="font-label text-sm text-on-surface">€300 / Review</span>
+              <button class="hire-btn text-primary font-label text-sm tracking-wide underline underline-offset-4" data-expert="julian">Hire</button>
+            </div>
+          </div>
+        </article>
+        <article class="expert-card group flex gap-6 cursor-pointer" data-expert="vance">
+          <div class="w-24 h-32 rounded-lg bg-surface-variant shrink-0 overflow-hidden">
+            <img alt="Dr. Julian Vance" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVjbImO9TbF5uFtLh2RZYbYS-0PRdmlv02gjR5YeNR4-MHT_2UXKTKDJTIO51PKJOU6jaQtom8rehNPkAYWlDJK6jd0Z70bPNsyCa4rVTtOGh6TyJpwulLVOPzWROJL_VUrkKJkgyCaWE469o5t4QgiEpovJ5ruosPaVcnfyEQ8Fnn065ERskPZhD1jzd3cYfaKRAXXZ4u3TPgBhNdnzEc_16gBPkrW2kEz2bUqwsqoztEPEzHW7eOJHJHDV7FbLoHX4zIeiamHA"/>
+          </div>
+          <div class="flex flex-col justify-center flex-1">
+            <h4 class="font-headline text-lg font-medium text-on-surface">Dr. Julian Vance</h4>
+            <p class="font-body text-sm text-on-surface-variant mb-3">Antiquities Assessor</p>
+            <div class="flex items-center justify-between">
+              <span class="font-label text-sm text-on-surface">€280 / Review</span>
+              <button class="hire-btn text-primary font-label text-sm tracking-wide underline underline-offset-4" data-expert="vance">Hire</button>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </section>
+
+  <!-- ========== CLIENT BRIEF ========== -->
+  <section id="screen-c-brief" class="screen pb-28" data-screen="c-brief" data-role="client">
+    <header class="app-header fixed top-0 w-full z-40 flex items-center gap-4 px-6 py-4 bg-surface-container-lowest/80 backdrop-blur-xl pt-safe">
+      <button class="nav-to text-on-surface-variant hover:text-primary" data-back="true" data-target="c-market" aria-label="Back"><span class="material-symbols-outlined">arrow_back</span></button>
+      <h1 class="font-headline text-xl text-on-surface flex-1">Create Brief</h1>
+    </header>
+    <main class="max-w-3xl mx-auto pt-24 px-6 pb-8">
+      <div class="flex justify-center gap-2 mb-10">
+        <span class="step-dot w-2.5 h-2.5 rounded-full bg-surface-variant active" data-step="0"></span>
+        <span class="step-dot w-2.5 h-2.5 rounded-full bg-surface-variant" data-step="1"></span>
+        <span class="step-dot w-2.5 h-2.5 rounded-full bg-surface-variant" data-step="2"></span>
+        <span class="step-dot w-2.5 h-2.5 rounded-full bg-surface-variant" data-step="3"></span>
+      </div>
+      <form id="brief-form" class="space-y-6">
+        <div class="brief-panel active" data-panel="0">
+          <span class="font-label text-xs tracking-widest text-primary uppercase">Step 1 of 4</span>
+          <h2 class="font-headline text-2xl text-on-surface mt-2 mb-6">What do you need reviewed?</h2>
+          <input type="text" required placeholder="e.g. Portfolio critique, manuscript review..." class="w-full bg-surface-container-lowest rounded-lg px-4 py-4 font-body ghost-border focus:ring-0 focus:outline-none focus:shadow-[inset_0_0_0_2px_#094cb2]"/>
+        </div>
+        <div class="brief-panel" data-panel="1">
+          <span class="font-label text-xs tracking-widest text-primary uppercase">Step 2 of 4</span>
+          <h2 class="font-headline text-2xl text-on-surface mt-2 mb-6">Describe your request</h2>
+          <textarea required rows="5" placeholder="Share context, goals, and specific questions for the expert..." class="w-full bg-surface-container-lowest rounded-lg px-4 py-4 font-body ghost-border focus:ring-0 focus:outline-none focus:shadow-[inset_0_0_0_2px_#094cb2]"></textarea>
+        </div>
+        <div class="brief-panel" data-panel="2">
+          <span class="font-label text-xs tracking-widest text-primary uppercase">Step 3 of 4</span>
+          <h2 class="font-headline text-2xl text-on-surface mt-2 mb-6">Budget range</h2>
+          <div class="grid grid-cols-3 gap-3">
+            <label class="cursor-pointer"><input type="radio" name="budget" value="150" class="sr-only peer"/><span class="block py-4 text-center rounded-lg bg-surface-container-low peer-checked:bg-primary peer-checked:text-on-primary font-label text-sm transition-all">€150</span></label>
+            <label class="cursor-pointer"><input type="radio" name="budget" value="250" class="sr-only peer" checked/><span class="block py-4 text-center rounded-lg bg-surface-container-low peer-checked:bg-primary peer-checked:text-on-primary font-label text-sm transition-all">€250</span></label>
+            <label class="cursor-pointer"><input type="radio" name="budget" value="500" class="sr-only peer"/><span class="block py-4 text-center rounded-lg bg-surface-container-low peer-checked:bg-primary peer-checked:text-on-primary font-label text-sm transition-all">€500+</span></label>
+          </div>
+        </div>
+        <div class="brief-panel" data-panel="3">
+          <span class="font-label text-xs tracking-widest text-primary uppercase">Step 4 of 4</span>
+          <h2 class="font-headline text-2xl text-on-surface mt-2 mb-6">Expertise tag</h2>
+          <div class="flex flex-wrap gap-2">
+            <label class="cursor-pointer"><input type="checkbox" class="sr-only peer"/><span class="px-4 py-2 rounded-full bg-surface-container-low peer-checked:bg-tertiary peer-checked:text-on-tertiary font-label text-sm">Fine Art</span></label>
+            <label class="cursor-pointer"><input type="checkbox" class="sr-only peer"/><span class="px-4 py-2 rounded-full bg-surface-container-low peer-checked:bg-tertiary peer-checked:text-on-tertiary font-label text-sm">Architecture</span></label>
+            <label class="cursor-pointer"><input type="checkbox" class="sr-only peer"/><span class="px-4 py-2 rounded-full bg-surface-container-low peer-checked:bg-tertiary peer-checked:text-on-tertiary font-label text-sm">Literature</span></label>
+            <label class="cursor-pointer"><input type="checkbox" class="sr-only peer"/><span class="px-4 py-2 rounded-full bg-surface-container-low peer-checked:bg-tertiary peer-checked:text-on-tertiary font-label text-sm">Philosophy</span></label>
+          </div>
+        </div>
+      </form>
+      <div class="flex gap-3 mt-10">
+        <button id="brief-prev" class="flex-1 py-4 bg-surface-container-high text-on-surface font-label text-sm uppercase tracking-widest rounded-lg opacity-50 pointer-events-none">Back</button>
+        <button id="brief-next" class="flex-[2] py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-label text-sm uppercase tracking-widest rounded-lg">Continue</button>
+      </div>
+    </main>
+  </section>
+
+  <!-- ========== CLIENT REQUESTS ========== -->
+  <section id="screen-c-requests" class="screen pb-28" data-screen="c-requests" data-role="client">
+    <header class="app-header fixed top-0 w-full z-40 px-6 py-4 bg-surface-container-lowest/80 backdrop-blur-xl pt-safe">
+      <h1 class="font-headline text-xl text-on-surface">My Requests</h1>
+    </header>
+    <main class="max-w-3xl mx-auto pt-24 px-6 space-y-6">
+      <div class="relative pl-6 border-l-2 border-primary/30 space-y-8">
+        <div class="request-card relative cursor-pointer" data-expand>
+          <span class="absolute -left-[1.6rem] top-1 w-3 h-3 rounded-full bg-primary ring-4 ring-primary-fixed/40"></span>
+          <div class="bg-surface-container-low rounded-xl p-5">
+            <span class="font-label text-[10px] tracking-widest text-tertiary uppercase">In Review</span>
+            <h3 class="font-headline text-lg text-on-surface mt-1">Portfolio Critique — Abstract Series</h3>
+            <p class="font-body text-sm text-on-surface-variant mt-1">Prof. Elena Rossi · Submitted Oct 20</p>
+          </div>
+          <div class="request-feedback mt-4 bg-surface-container-lowest rounded-xl p-5 ghost-border">
+            <p class="font-label text-[10px] tracking-widest text-primary uppercase mb-3">Expert Feedback</p>
+            <p class="font-body text-sm text-on-surface leading-relaxed editorial-dropcap">Your chromatic tension in panels 3–7 demonstrates a mature understanding of Rothko's late period, yet the compositional weight leans uncomfortably left. Consider rebalancing the visual anchor...</p>
+            <button class="nav-to mt-4 text-primary font-label text-xs uppercase tracking-widest underline" data-target="c-review">Read Full Review</button>
+          </div>
+        </div>
+        <div class="request-card relative">
+          <span class="absolute -left-[1.6rem] top-1 w-3 h-3 rounded-full bg-surface-variant"></span>
+          <div class="bg-surface-container-low rounded-xl p-5">
+            <span class="font-label text-[10px] tracking-widest text-secondary uppercase">Pending Match</span>
+            <h3 class="font-headline text-lg text-on-surface mt-1">Manuscript — Chapter Draft</h3>
+            <p class="font-body text-sm text-on-surface-variant mt-1">Matching with experts · €250 budget</p>
+          </div>
+        </div>
+        <div class="request-card relative opacity-75">
+          <span class="absolute -left-[1.6rem] top-1 w-3 h-3 rounded-full bg-surface-variant"></span>
+          <div class="bg-surface-container-low rounded-xl p-5">
+            <span class="font-label text-[10px] tracking-widest text-primary uppercase">Completed</span>
+            <h3 class="font-headline text-lg text-on-surface mt-1">Architecture Essay Review</h3>
+            <p class="font-body text-sm text-on-surface-variant mt-1">Dr. Julian Hayes · Oct 12</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- ========== CLIENT EXPERT DETAIL ========== -->
+  <section id="screen-c-detail" class="screen pb-28" data-screen="c-detail" data-role="client">
+    <header class="app-header fixed top-0 w-full z-40 flex items-center gap-4 px-6 py-4 bg-surface-container-lowest/80 backdrop-blur-xl pt-safe">
+      <button class="nav-to text-on-surface-variant hover:text-primary" data-back="true" data-target="c-market" aria-label="Back"><span class="material-symbols-outlined">arrow_back</span></button>
+      <h1 class="font-headline text-lg text-on-surface flex-1 truncate" id="detail-name">Expert Profile</h1>
+    </header>
+    <main class="max-w-3xl mx-auto">
+      <div class="h-72 relative overflow-hidden bg-surface-container-low">
+        <img id="detail-img" alt="" class="w-full h-full object-cover grayscale mix-blend-multiply"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+      </div>
+      <div class="px-6 -mt-8 relative z-10 space-y-6 pb-8">
+        <div>
+          <div class="flex items-center gap-2 text-tertiary mb-2">
+            <span class="material-symbols-outlined text-sm filled-icon">verified</span>
+            <span class="font-label text-xs tracking-wider uppercase">Verified Authority</span>
+          </div>
+          <h2 id="detail-title" class="font-headline text-3xl text-on-surface"></h2>
+          <p id="detail-role" class="font-body text-on-surface-variant mt-1"></p>
+        </div>
+        <p id="detail-bio" class="font-body text-sm text-on-surface-variant leading-relaxed"></p>
+        <div class="bg-surface-container-low rounded-xl p-5 space-y-3">
+          <p class="font-label text-[10px] tracking-widest text-primary uppercase" data-i18n="client.whatYouGet">What you get</p>
+          <ul class="space-y-2 text-sm text-on-surface-variant font-body">
+            <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base shrink-0">check_circle</span><span data-i18n="client.deliverable1">Written critique with line-by-line notes</span></li>
+            <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base shrink-0">check_circle</span><span data-i18n="client.deliverable2">48-hour turnaround on standard reviews</span></li>
+            <li class="flex gap-2"><span class="material-symbols-outlined text-primary text-base shrink-0">check_circle</span><span data-i18n="client.deliverable3">Archival PDF + shareable summary</span></li>
+          </ul>
+        </div>
+        <div class="grid grid-cols-3 gap-3 text-center">
+          <div class="bg-surface-container-low rounded-lg p-4">
+            <span class="font-headline text-xl text-on-surface" id="detail-rating">4.9</span>
+            <span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant block mt-1">Rating</span>
+          </div>
+          <div class="bg-surface-container-low rounded-lg p-4">
+            <span class="font-headline text-xl text-on-surface" id="detail-reviews">127</span>
+            <span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant block mt-1">Reviews</span>
+          </div>
+          <div class="bg-surface-container-low rounded-lg p-4">
+            <span class="font-headline text-xl text-on-surface" id="detail-response">24h</span>
+            <span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant block mt-1">Response</span>
+          </div>
+        </div>
+        <div class="bg-surface-container-low rounded-xl p-6 flex justify-between items-center">
+          <div>
+            <span class="font-label text-[10px] tracking-widest text-on-surface-variant uppercase">Professional Review</span>
+            <p class="font-headline text-2xl text-on-surface mt-1" id="detail-price">€250</p>
+          </div>
+          <button id="detail-hire" class="hire-cta font-label shrink-0">Hire Expert</button>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- ========== CHECKOUT ========== -->
+  <section id="screen-checkout" class="screen pb-28" data-screen="checkout">
+    <header class="app-header fixed top-0 w-full z-40 flex items-center justify-between px-6 py-4 bg-surface-container-lowest/80 backdrop-blur-xl pt-safe">
+      <button class="nav-to flex items-center text-on-surface-variant hover:text-primary group" data-back="true" data-target="c-detail" aria-label="Back">
+        <span class="material-symbols-outlined mr-1 group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
+        <span class="font-label text-xs uppercase tracking-widest">Back</span>
+      </button>
+      <span class="font-headline text-xl italic font-semibold text-on-surface">KiND</span>
+      <div class="w-12"></div>
+    </header>
+    <main class="max-w-lg mx-auto pt-24 px-6 space-y-8">
+      <div>
+        <h1 class="font-headline text-3xl text-on-surface font-semibold tracking-tight">Finalize Consultation</h1>
+        <p class="text-on-surface-variant mt-3 leading-relaxed">Review your request before authorizing the scholarly assessment.</p>
+      </div>
+      <article class="bg-surface-container-lowest rounded-xl p-6 flex gap-5 items-start ghost-border">
+        <img id="checkout-img" alt="" class="w-16 h-16 rounded-full object-cover grayscale shrink-0"/>
+        <div>
+          <span class="font-label text-[10px] uppercase tracking-widest text-primary font-semibold">Consulting Expert</span>
+          <h2 id="checkout-name" class="font-headline text-xl text-on-surface mt-1"></h2>
+          <p id="checkout-service" class="text-sm text-on-surface-variant mt-1">Professional Review</p>
+        </div>
+      </article>
+      <div class="space-y-3 font-body text-sm">
+        <div class="flex justify-between py-3 bg-surface-container-low/50 px-4 rounded-lg"><span class="text-on-surface-variant">Service fee</span><span id="checkout-fee" class="text-on-surface font-medium"></span></div>
+        <div class="flex justify-between py-3 px-4"><span class="text-on-surface-variant">Platform fee</span><span class="text-on-surface">€12</span></div>
+        <div class="flex justify-between py-4 px-4 bg-surface-container-low rounded-lg font-headline text-lg"><span>Total</span><span id="checkout-total" class="text-primary"></span></div>
+      </div>
+      <div class="bg-surface-container-lowest rounded-xl p-5 ghost-border">
+        <span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Payment</span>
+        <div class="flex items-center gap-4 mt-4">
+          <span class="material-symbols-outlined text-2xl text-primary">credit_card</span>
+          <div class="flex-1">
+            <p class="font-body text-sm font-medium">•••• •••• •••• 4242</p>
+            <p class="font-label text-xs text-on-surface-variant">Expires 09/28</p>
+          </div>
+          <span class="font-label text-xs text-primary uppercase tracking-widest">Change</span>
+        </div>
+      </div>
+      <button id="confirm-pay" class="w-full py-5 bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline text-lg rounded-lg shadow-[0_8px_24px_rgba(9,76,178,0.2)]">Authorize €262</button>
+    </main>
+  </section>
+
+  <!-- ========== REVIEW DETAIL ========== -->
+  <section id="screen-c-review" class="screen pb-28" data-screen="c-review" data-role="client">
+    <header class="app-header fixed top-0 w-full z-40 flex items-center gap-4 px-6 py-4 bg-surface-container-lowest/80 backdrop-blur-xl pt-safe">
+      <button class="nav-to text-on-surface-variant hover:text-primary" data-back="true" data-target="c-requests" aria-label="Back"><span class="material-symbols-outlined">arrow_back</span></button>
+      <h1 class="font-headline text-lg text-on-surface">Expert Review</h1>
+    </header>
+    <main class="max-w-3xl mx-auto pt-24 px-6 pb-8">
+      <div class="flex items-center gap-4 mb-8">
+        <img alt="Prof. Elena Rossi" class="w-14 h-14 rounded-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLaKhFuR8HJ62XgApE7zS3q3V5szzHVf4WGGD1qJJQ9WBDAW97yPxpVOM2GBS-BGwIcBe7-q4eESXaZYwvY6ARkDBsVdrcHc7qdCJliCXlYEucUz_MRirP5IOznDSmf36x8vpiXKzmSS4O2p6Lv6tWAY2rKmKPC6N0iA-S2MhXr2VP8Ssaz_HNRDA9cY3twAY4iGJ8wtHy_f1JlbWIIaIJBbWKCnw8JaubuDyTcJCqFv03VMa5SuuXeW29dUsSs_ItPJa24eBMCg"/>
+        <div>
+          <h2 class="font-headline text-xl text-on-surface">Prof. Elena Rossi</h2>
+          <p class="font-label text-xs text-on-surface-variant uppercase tracking-widest">Portfolio Critique · Oct 21</p>
+        </div>
+      </div>
+      <article class="prose prose-sm max-w-none">
+        <p class="font-body text-on-surface leading-relaxed editorial-dropcap mb-6">Your chromatic tension in panels 3–7 demonstrates a mature understanding of Rothko's late period, yet the compositional weight leans uncomfortably left. Consider rebalancing the visual anchor toward the golden ratio intersection at lower-right.</p>
+        <p class="font-body text-on-surface-variant leading-relaxed mb-6">The materiality of your brushwork in the tertiary layer suggests influence from Richter's squeegee technique — a bold choice that rewards closer inspection under raking light. I recommend documenting this series under controlled gallery lighting before final submission.</p>
+        <blockquote class="border-l-4 border-tertiary pl-6 my-8 font-headline italic text-lg text-on-surface">"The work breathes with intention — refine the silence between strokes."</blockquote>
+        <p class="font-body text-on-surface-variant leading-relaxed" data-i18n-html="client.reviewAssessment">Overall assessment: <strong class="text-primary">Distinction</strong> — ready for juried exhibition with minor revisions noted above.</p>
+      </article>
+      <div class="flex gap-3 pt-6 border-t border-outline-variant/30">
+        <button type="button" id="review-share" class="flex-1 py-3.5 rounded-lg bg-surface-container-low font-label text-xs uppercase tracking-widest text-on-surface flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-lg">ios_share</span><span data-i18n="client.shareReview">Share</span>
+        </button>
+        <button type="button" id="review-download" class="flex-1 py-3.5 rounded-lg bg-gradient-to-r from-primary to-primary-container text-on-primary font-label text-xs uppercase tracking-widest flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-lg">download</span><span data-i18n="client.downloadPdf">Download PDF</span>
+        </button>
+      </div>
+    </main>
+  </section>
+
+  <!-- ========== SUCCESS: BRIEF SUBMITTED ========== -->
+  <section id="screen-success-brief" class="screen" data-screen="success-brief" data-role="client">
+    <div class="success-shell">
+      <div class="success-icon"><span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings:'FILL' 0,'wght' 200">check</span></div>
+      <h1 class="font-headline text-3xl md:text-4xl text-on-surface font-medium mb-4" data-i18n="success.briefTitle">Brief Submitted</h1>
+      <p class="font-body text-base text-on-surface-variant leading-relaxed max-w-md mb-6" data-i18n="success.briefDesc">We're matching you with verified authorities. Expect expert replies within 24 hours.</p>
+      <p class="font-headline italic text-tertiary text-lg mb-10" data-i18n="success.briefTagline">"Every masterpiece deserves a critic."</p>
+      <div class="flex flex-col gap-3 w-full max-w-xs">
+        <button type="button" class="nav-to w-full py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-label text-sm uppercase tracking-widest rounded-lg shadow-[0_8px_24px_rgba(9,76,178,0.2)]" data-target="c-requests" data-reset-history="true" data-i18n="success.viewRequests">View My Requests</button>
+        <button type="button" class="nav-to w-full py-3 text-primary font-label text-xs uppercase tracking-widest" data-target="c-market" data-i18n="success.backMarket">Back to Market</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SUCCESS: CHECKOUT ========== -->
+  <section id="screen-success-checkout" class="screen" data-screen="success-checkout" data-role="client">
+    <div class="success-shell">
+      <div class="success-icon"><span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings:'FILL' 0,'wght' 200">verified</span></div>
+      <h1 class="font-headline text-3xl md:text-4xl text-on-surface font-medium mb-4" data-i18n="success.checkoutTitle">Consultation Authorized</h1>
+      <p class="font-body text-base text-on-surface-variant leading-relaxed max-w-md mb-2" data-i18n="success.checkoutDesc">Your expert will begin the scholarly assessment shortly.</p>
+      <p id="success-checkout-expert" class="font-label text-sm text-primary uppercase tracking-widest mb-6"></p>
+      <p class="font-headline italic text-tertiary text-lg mb-10" data-i18n="success.checkoutTagline">"Precision takes time."</p>
+      <div class="flex flex-col gap-3 w-full max-w-xs">
+        <button type="button" class="nav-to w-full py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-label text-sm uppercase tracking-widest rounded-lg" data-target="c-requests" data-reset-history="true" data-i18n="success.trackRequest">Track Request</button>
+        <button type="button" class="nav-to w-full py-3 text-primary font-label text-xs uppercase tracking-widest" data-target="c-market" data-i18n="success.backMarket">Back to Market</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SUCCESS: PUBLISH ========== -->
+  <section id="screen-success-publish" class="screen" data-screen="success-publish" data-role="expert">
+    <div class="success-shell">
+      <div class="success-icon"><span class="material-symbols-outlined text-tertiary text-5xl filled-icon">storefront</span></div>
+      <h1 class="font-headline text-3xl md:text-4xl text-on-surface font-medium mb-4" data-i18n="success.publishTitle">Live on Marketplace</h1>
+      <p class="font-body text-base text-on-surface-variant leading-relaxed max-w-md mb-6" data-i18n="success.publishDesc">Your digital twin is now discoverable. Seekers can hire you for professional reviews.</p>
+      <p class="font-headline italic text-tertiary text-lg mb-10" data-i18n="success.publishTagline">"Knowledge, instilled."</p>
+      <div class="flex flex-col gap-3 w-full max-w-xs">
+        <button type="button" class="nav-to w-full py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-label text-sm uppercase tracking-widest rounded-lg" data-target="e-vault" data-reset-history="true" data-i18n="success.viewVault">View Knowledge Vault</button>
+        <button type="button" class="nav-to w-full py-3 text-primary font-label text-xs uppercase tracking-widest" data-target="e-hub" data-i18n="success.backHub">Back to Hub</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- Bottom Navigation -->
+<nav id="bottom-nav" class="nav-hidden fixed bottom-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl pb-safe">
+  <div id="nav-expert" class="nav-hidden flex justify-around items-center h-16 px-2">
+    <button class="nav-item flex flex-col items-center justify-center w-16 pt-2 text-primary border-t-2 border-primary" data-target="e-hub"><span class="material-symbols-outlined filled-icon text-[20px] mb-0.5">architecture</span><span class="font-label text-[10px] uppercase tracking-widest">Hub</span></button>
+    <button class="nav-item flex flex-col items-center justify-center w-16 pt-2 text-secondary" data-target="e-training"><span class="material-symbols-outlined text-[20px] mb-0.5">model_training</span><span class="font-label text-[10px] uppercase tracking-widest">Train</span></button>
+    <button class="nav-item flex flex-col items-center justify-center w-16 pt-2 text-secondary" data-target="e-inbox"><span class="material-symbols-outlined text-[20px] mb-0.5">inbox</span><span class="font-label text-[10px] uppercase tracking-widest">Inbox</span></button>
+    <button class="nav-item flex flex-col items-center justify-center w-16 pt-2 text-secondary" data-target="e-vault"><span class="material-symbols-outlined text-[20px] mb-0.5">history_edu</span><span class="font-label text-[10px] uppercase tracking-widest">Vault</span></button>
+  </div>
+  <div id="nav-client" class="nav-hidden flex justify-around items-center h-16 px-2">
+    <button class="nav-item flex flex-col items-center justify-center flex-1 pt-2 text-primary border-t-2 border-primary" data-target="c-market"><span class="material-symbols-outlined filled-icon text-[20px] mb-0.5">storefront</span><span class="font-label text-[10px] uppercase tracking-widest">Market</span></button>
+    <button class="nav-item flex flex-col items-center justify-center flex-1 pt-2 text-secondary" data-target="c-brief"><span class="material-symbols-outlined text-[20px] mb-0.5">edit_note</span><span class="font-label text-[10px] uppercase tracking-widest">Brief</span></button>
+    <button class="nav-item flex flex-col items-center justify-center flex-1 pt-2 text-secondary" data-target="c-requests"><span class="material-symbols-outlined text-[20px] mb-0.5">assignment</span><span class="font-label text-[10px] uppercase tracking-widest">Requests</span></button>
+  </div>
+</nav>
+
+<!-- Toast -->
+<div id="toast" class="toast fixed bottom-24 left-6 right-6 z-[60] max-w-md mx-auto bg-inverse-surface text-inverse-on-surface px-6 py-4 rounded-xl font-body text-sm text-center shadow-[0_24px_40px_rgba(27,28,29,0.12)]" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  const I18N = {
+    en: {
+      'meta.title': 'KiND — Expert Twin Marketplace',
+      'welcome.headline': 'Knowledge, <span class="italic text-primary">Instilled</span>.',
+      'welcome.subtitle': "Train your digital twin. Or hire the world's foremost authorities for bespoke critique and curation.",
+      'welcome.expertBadge': 'Expert', 'welcome.expertTitle': 'Train my Digital Twin',
+      'welcome.expertDesc': 'Upload knowledge, pass tests, publish to marketplace',
+      'welcome.seekerBadge': 'Seeker', 'welcome.seekerTitle': 'Explore KiND',
+      'welcome.seekerDesc': 'Post a brief, hire experts, receive professional feedback',
+      'welcome.signIn': 'Already have an account? Sign in',
+      'welcome.howItWorks': 'How KiND works', 'welcome.step1': 'Train', 'welcome.step2': 'Verify', 'welcome.step3': 'Deliver',
+      'expert.readyBadge': 'Almost marketplace-ready',
+      'expert.readyDesc': '84% synchronized — one pressure test away from publish.',
+      'expert.journeyTrain': 'Train', 'expert.journeyTest': 'Test', 'expert.journeyPublish': 'Publish',
+      'client.statExpertsNum': '127+', 'client.statExperts': 'Verified experts',
+      'client.statReviewsNum': '2.4k', 'client.statReviews': 'Reviews delivered',
+      'client.statResponseNum': '24h', 'client.statResponse': 'Avg. response',
+      'client.whatYouGet': 'What you get',
+      'client.deliverable1': 'Written critique with line-by-line notes',
+      'client.deliverable2': '48-hour turnaround on standard reviews',
+      'client.deliverable3': 'Archival PDF + shareable summary',
+      'client.shareReview': 'Share', 'client.downloadPdf': 'Download PDF',
+      'success.briefTitle': 'Brief Submitted',
+      'success.briefDesc': "We're matching you with verified authorities. Expect expert replies within 24 hours.",
+      'success.briefTagline': '"Every masterpiece deserves a critic."',
+      'success.viewRequests': 'View My Requests', 'success.backMarket': 'Back to Market',
+      'success.checkoutTitle': 'Consultation Authorized',
+      'success.checkoutDesc': 'Your expert will begin the scholarly assessment shortly.',
+      'success.checkoutTagline': '"Precision takes time."', 'success.trackRequest': 'Track Request',
+      'success.publishTitle': 'Live on Marketplace',
+      'success.publishDesc': 'Your digital twin is now discoverable. Seekers can hire you for professional reviews.',
+      'success.publishTagline': '"Knowledge, instilled."',
+      'success.viewVault': 'View Knowledge Vault', 'success.backHub': 'Back to Hub',
+      'toast.shareReview': 'Review link copied to clipboard', 'toast.downloadPdf': 'PDF download started',
+      'nav.hub': 'Hub', 'nav.train': 'Train', 'nav.inbox': 'Inbox', 'nav.vault': 'Vault',
+      'nav.market': 'Market', 'nav.brief': 'Brief', 'nav.requests': 'Requests',
+      'common.back': 'Back', 'common.live': 'Live', 'common.total': 'Total', 'common.change': 'Change',
+      'expert.hub': 'Expert Hub', 'expert.twinProfile': 'Digital Twin Profile',
+      'expert.twinBio': 'Curator of Antiquities — Hellenistic artifacts and early computational mechanisms.',
+      'expert.synchronized': 'Synchronized', 'expert.knowledgeBase': 'Knowledge Base',
+      'expert.personaDepth': 'Persona Depth', 'expert.pressureTests': 'Pressure Tests', 'expert.viewAll': 'View All',
+      'expert.test1': 'Context Retrieval Anomaly', 'expert.test2': 'Tone Consistency: Debate Mode',
+      'expert.test3': 'Edge Case: Philosophical Paradox', 'expert.success': 'SUCCESS', 'expert.refining': 'REFINING',
+      'expert.publish': 'Publish to Marketplace',
+      'expert.trainingTitle': 'Training Center', 'expert.inTraining': 'In Training', 'expert.ready': 'Ready',
+      'expert.uploadTitle': 'Upload Knowledge',
+      'expert.uploadDesc': 'PDFs, manuscripts, lecture notes — drag here or tap to browse',
+      'expert.uploadLimit': 'Supports up to 50MB per file', 'expert.activeModules': 'Active Modules',
+      'expert.mod1': 'Voice & Tone Calibration', 'expert.mod2': 'Domain Corpus Ingestion',
+      'expert.mod3': 'Reasoning Pattern Mapping', 'expert.runTest': 'Run Pressure Test',
+      'expert.twinReady': 'Twin Ready for Review',
+      'expert.twinReadyDesc': 'All core modules passed. Schedule final assessment.',
+      'expert.proceedPublish': 'Proceed to Publish',
+      'expert.inboxTitle': 'Requests', 'expert.newCount': '3 New', 'expert.statusNew': 'New',
+      'expert.inbox1Title': 'Manuscript Provenance Review', 'expert.inbox1Meta': 'From Elena M. · €280 · Due in 48h',
+      'expert.inbox1Desc': '18th-century European manuscript — need authentication of marginalia and chain of custody assessment.',
+      'expert.acceptBrief': 'Accept Brief', 'expert.decline': 'Decline', 'expert.inProgress': 'In Progress',
+      'expert.inbox2Title': 'Architectural Critique — Brutalist Wing', 'expert.inbox2Meta': 'From James K. · €350',
+      'expert.draftPlaceholder': 'Draft your scholarly response...', 'expert.sendResponse': 'Send Response',
+      'expert.delivered': 'Delivered', 'expert.inbox3Title': 'Fine Art Portfolio Review',
+      'expert.inbox3Meta': 'Completed Oct 22 · €250 earned',
+      'expert.vaultTitle': 'Knowledge Vault', 'expert.vaultSubtitle': 'Content Assets',
+      'expert.totalRevenue': 'Total Revenue', 'expert.revenueGrowth': '+18% this month',
+      'expert.active': 'Active', 'expert.archived': 'Archived',
+      'expert.asset1': 'Antiquities Assessment', 'expert.asset2': 'Debate Mode Critique',
+      'expert.asset3': 'Full Manuscript Review Package',
+      'expert.asset1Meta': '47 sessions · 4.9★', 'expert.asset2Meta': '23 sessions · 4.8★',
+      'expert.asset3Meta': 'Premium tier · 12 active subscribers', 'expert.noArchived': 'No archived assets yet.',
+      'client.searchPlaceholder': 'Search expertise, mentors, topics...',
+      'client.fineArt': 'Fine Art', 'client.architecture': 'Architecture',
+      'client.literature': 'Literature', 'client.philosophy': 'Philosophy',
+      'client.bannerTitle': 'Seek Perfection.<br/>Find your Mentor.',
+      'client.bannerDesc': 'Connect with global authorities for critique and curation.',
+      'client.createBrief': 'Create Brief', 'client.featuredMentors': 'Featured Mentors',
+      'client.topAuthority': 'Top Authority', 'client.hire': 'Hire', 'client.perReview': '/ Review',
+      'client.briefTitle': 'Create Brief', 'client.step1': 'Step 1 of 4', 'client.step2': 'Step 2 of 4',
+      'client.step3': 'Step 3 of 4', 'client.step4': 'Step 4 of 4',
+      'client.q1': 'What do you need reviewed?', 'client.q2': 'Describe your request',
+      'client.q3': 'Budget range', 'client.q4': 'Expertise tag',
+      'client.placeholder1': 'e.g. Portfolio critique, manuscript review...',
+      'client.placeholder2': 'Share context, goals, and specific questions for the expert...',
+      'client.briefBack': 'Back', 'client.briefContinue': 'Continue', 'client.briefSubmit': 'Submit Brief',
+      'client.requestsTitle': 'My Requests', 'client.inReview': 'In Review',
+      'client.req1Title': 'Portfolio Critique — Abstract Series', 'client.req1Meta': 'Prof. Elena Rossi · Submitted Oct 20',
+      'client.expertFeedback': 'Expert Feedback',
+      'client.feedbackPreview': "Your chromatic tension in panels 3–7 demonstrates a mature understanding of Rothko's late period, yet the compositional weight leans uncomfortably left. Consider rebalancing the visual anchor...",
+      'client.readFull': 'Read Full Review', 'client.pendingMatch': 'Pending Match',
+      'client.req2Title': 'Manuscript — Chapter Draft', 'client.req2Meta': 'Matching with experts · €250 budget',
+      'client.completed': 'Completed', 'client.req3Title': 'Architecture Essay Review',
+      'client.req3Meta': 'Dr. Julian Hayes · Oct 12',
+      'client.expertProfile': 'Expert Profile', 'client.verified': 'Verified Authority',
+      'client.rating': 'Rating', 'client.reviews': 'Reviews', 'client.response': 'Response',
+      'client.professionalReview': 'Professional Review', 'client.hireExpert': 'Hire Expert',
+      'client.finalize': 'Finalize Consultation',
+      'client.checkoutDesc': 'Review your request before authorizing the scholarly assessment.',
+      'client.consultingExpert': 'Consulting Expert', 'client.serviceFee': 'Service fee',
+      'client.platformFee': 'Platform fee', 'client.payment': 'Payment', 'client.expires': 'Expires 09/28',
+      'client.reviewTitle': 'Expert Review', 'client.reviewMeta': 'Portfolio Critique · Oct 21',
+      'client.reviewP1': "Your chromatic tension in panels 3–7 demonstrates a mature understanding of Rothko's late period, yet the compositional weight leans uncomfortably left. Consider rebalancing the visual anchor toward the golden ratio intersection at lower-right.",
+      'client.reviewP2': "The materiality of your brushwork in the tertiary layer suggests influence from Richter's squeegee technique — a bold choice that rewards closer inspection under raking light. I recommend documenting this series under controlled gallery lighting before final submission.",
+      'client.reviewQuote': '"The work breathes with intention — refine the silence between strokes."',
+      'client.reviewAssessment': 'Overall assessment: <strong class="text-primary">Distinction</strong> — ready for juried exhibition with minor revisions noted above.',
+      'expert.elena.role': 'Fine Art Curator', 'expert.julian.role': 'Architectural Historian', 'expert.vance.role': 'Antiquities Assessor',
+      'expert.elena.bio': 'Former Tate Modern curator with 20 years assessing contemporary and classical portfolios for major exhibitions.',
+      'expert.julian.bio': 'Specialist in 20th-century brutalist architecture and urban planning critique for academic and professional publications.',
+      'expert.vance.bio': 'Senior antiquities assessor for 18th-century European manuscripts and archival provenance verification.',
+      'toast.published': 'Digital twin published to marketplace',
+      'toast.upload': 'Upload dialog would open here',
+      'toast.briefSubmitted': 'Brief submitted — matching with experts',
+      'toast.authorized': 'Consultation authorized — expert will respond within 24h'
+    },
+    zh: {
+      'meta.title': 'KiND — 专家分身市集',
+      'welcome.headline': '知识，<span class="italic text-primary">融会贯通</span>。',
+      'welcome.subtitle': '训练你的数字分身，或聘请全球顶尖专家，获得专业点评与策展指导。',
+      'welcome.expertBadge': '专家', 'welcome.expertTitle': '训练我的数字分身',
+      'welcome.expertDesc': '上传知识库、通过压测、上架内容资产',
+      'welcome.seekerBadge': '需求方', 'welcome.seekerTitle': '探索 KiND',
+      'welcome.seekerDesc': '发布需求、雇佣专家、获取专业反馈',
+      'welcome.signIn': '已有账号？登录',
+      'welcome.howItWorks': 'KiND 如何运作', 'welcome.step1': '训练', 'welcome.step2': '验证', 'welcome.step3': '交付',
+      'expert.readyBadge': '即将上架市集',
+      'expert.readyDesc': '同步进度 84% — 再完成一次压测即可发布。',
+      'expert.journeyTrain': '训练', 'expert.journeyTest': '测试', 'expert.journeyPublish': '发布',
+      'client.statExpertsNum': '127+', 'client.statExperts': '认证专家',
+      'client.statReviewsNum': '2.4k', 'client.statReviews': '已交付点评',
+      'client.statResponseNum': '24h', 'client.statResponse': '平均响应',
+      'client.whatYouGet': '你将获得',
+      'client.deliverable1': '逐条批注的书面专业点评',
+      'client.deliverable2': '标准评审 48 小时内交付',
+      'client.deliverable3': '存档 PDF + 可分享摘要',
+      'client.shareReview': '分享', 'client.downloadPdf': '下载 PDF',
+      'success.briefTitle': '需求已提交',
+      'success.briefDesc': '正在为你匹配认证专家，预计 24 小时内收到回复。',
+      'success.briefTagline': '「每件杰作，都值得一位批评家。」',
+      'success.viewRequests': '查看我的需求', 'success.backMarket': '返回市集',
+      'success.checkoutTitle': '咨询已授权',
+      'success.checkoutDesc': '专家将很快开始学术评估。',
+      'success.checkoutTagline': '「精准，需要时间。」', 'success.trackRequest': '跟踪需求',
+      'success.publishTitle': '已上架市集',
+      'success.publishDesc': '你的数字分身现已可被搜索，需求方可雇佣你进行专业评审。',
+      'success.publishTagline': '「知识，融会贯通。」',
+      'success.viewVault': '查看知识库', 'success.backHub': '返回中心',
+      'toast.shareReview': '点评链接已复制', 'toast.downloadPdf': 'PDF 下载已开始',
+      'nav.hub': '中枢', 'nav.train': '训练', 'nav.inbox': '收件', 'nav.vault': '宝库',
+      'nav.market': '市集', 'nav.brief': '需求', 'nav.requests': '订单',
+      'common.back': '返回', 'common.live': '在售', 'common.total': '合计', 'common.change': '更换',
+      'expert.hub': '专家中枢', 'expert.twinProfile': '数字分身档案',
+      'expert.twinBio': '古物策展人 — 专注希腊化时期文物与早期计算机制。',
+      'expert.synchronized': '已同步', 'expert.knowledgeBase': '知识库',
+      'expert.personaDepth': '人格深度', 'expert.pressureTests': '压力测试', 'expert.viewAll': '查看全部',
+      'expert.test1': '上下文检索异常', 'expert.test2': '语调一致性：辩论模式',
+      'expert.test3': '边缘案例：哲学悖论', 'expert.success': '通过', 'expert.refining': '优化中',
+      'expert.publish': '上架市集',
+      'expert.trainingTitle': '训练中心', 'expert.inTraining': '训练中', 'expert.ready': '已就绪',
+      'expert.uploadTitle': '上传知识',
+      'expert.uploadDesc': 'PDF、手稿、讲义 — 拖拽至此或点击浏览',
+      'expert.uploadLimit': '单文件最大 50MB', 'expert.activeModules': '进行中模块',
+      'expert.mod1': '声线与语调校准', 'expert.mod2': '领域语料摄入',
+      'expert.mod3': '推理模式映射', 'expert.runTest': '运行压力测试',
+      'expert.twinReady': '分身待终审',
+      'expert.twinReadyDesc': '核心模块已全部通过，请安排最终评估。',
+      'expert.proceedPublish': '前往上架',
+      'expert.inboxTitle': '需求收件', 'expert.newCount': '3 条新消息', 'expert.statusNew': '新',
+      'expert.inbox1Title': '手稿来源鉴定', 'expert.inbox1Meta': '来自 Elena M. · €280 · 48小时内',
+      'expert.inbox1Desc': '18世纪欧洲手稿 — 需鉴定边注真伪与保管链。',
+      'expert.acceptBrief': '接受需求', 'expert.decline': '婉拒', 'expert.inProgress': '进行中',
+      'expert.inbox2Title': '建筑评论 — 粗野主义侧翼', 'expert.inbox2Meta': '来自 James K. · €350',
+      'expert.draftPlaceholder': '撰写学术回复草稿…', 'expert.sendResponse': '发送回复',
+      'expert.delivered': '已交付', 'expert.inbox3Title': '艺术作品集评审',
+      'expert.inbox3Meta': '10月22日完成 · 收入 €250',
+      'expert.vaultTitle': '知识宝库', 'expert.vaultSubtitle': '内容资产',
+      'expert.totalRevenue': '累计收入', 'expert.revenueGrowth': '本月 +18%',
+      'expert.active': '在售', 'expert.archived': '已归档',
+      'expert.asset1': '古物鉴定服务', 'expert.asset2': '辩论模式点评',
+      'expert.asset3': '完整手稿评审套餐',
+      'expert.asset1Meta': '47 次 · 4.9★', 'expert.asset2Meta': '23 次 · 4.8★',
+      'expert.asset3Meta': '尊享档 · 12 位活跃订阅',
+      'expert.noArchived': '暂无归档资产。',
+      'client.searchPlaceholder': '搜索领域、导师、主题…',
+      'client.fineArt': '美术', 'client.architecture': '建筑',
+      'client.literature': '文学', 'client.philosophy': '哲学',
+      'client.bannerTitle': '追求卓越。<br/>遇见你的导师。',
+      'client.bannerDesc': '连接全球权威，获得点评与策展指导。',
+      'client.createBrief': '发布需求', 'client.featuredMentors': '精选导师',
+      'client.topAuthority': '顶级权威', 'client.hire': '雇佣', 'client.perReview': '/ 次评审',
+      'client.briefTitle': '发布需求', 'client.step1': '第 1 步，共 4 步', 'client.step2': '第 2 步，共 4 步',
+      'client.step3': '第 3 步，共 4 步', 'client.step4': '第 4 步，共 4 步',
+      'client.q1': '你需要评审什么？', 'client.q2': '描述你的需求',
+      'client.q3': '预算范围', 'client.q4': '专业标签',
+      'client.placeholder1': '例如：作品集点评、手稿审阅…',
+      'client.placeholder2': '说明背景、目标，以及希望专家回答的具体问题…',
+      'client.briefBack': '上一步', 'client.briefContinue': '继续', 'client.briefSubmit': '提交需求',
+      'client.requestsTitle': '我的需求', 'client.inReview': '评审中',
+      'client.req1Title': '作品集点评 — 抽象系列', 'client.req1Meta': 'Elena Rossi 教授 · 10月20日提交',
+      'client.expertFeedback': '专家反馈',
+      'client.feedbackPreview': '你在第 3–7 幅中的色彩张力体现了对罗斯科晚期风格的成熟理解，但构图重心偏左。建议将视觉锚点重新平衡至右下黄金分割点…',
+      'client.readFull': '阅读完整点评', 'client.pendingMatch': '匹配中',
+      'client.req2Title': '手稿 — 章节草稿', 'client.req2Meta': '正在匹配专家 · 预算 €250',
+      'client.completed': '已完成', 'client.req3Title': '建筑论文评审',
+      'client.req3Meta': 'Julian Hayes 博士 · 10月12日',
+      'client.expertProfile': '专家档案', 'client.verified': '认证权威',
+      'client.rating': '评分', 'client.reviews': '评价', 'client.response': '响应',
+      'client.professionalReview': '专业评审', 'client.hireExpert': '雇佣专家',
+      'client.finalize': '确认咨询',
+      'client.checkoutDesc': '授权前请确认需求详情。',
+      'client.consultingExpert': '咨询专家', 'client.serviceFee': '服务费',
+      'client.platformFee': '平台费', 'client.payment': '支付', 'client.expires': '有效期 09/28',
+      'client.reviewTitle': '专家点评', 'client.reviewMeta': '作品集点评 · 10月21日',
+      'client.reviewP1': '你在第 3–7 幅中的色彩张力体现了对罗斯科晚期风格的成熟理解，但构图重心偏左。建议将视觉锚点重新平衡至右下黄金分割点。',
+      'client.reviewP2': '第三层笔触的物质感暗示了里希特刮刀技法的影响——大胆而值得在侧光下细品。建议在可控画廊光线下记录本系列后再提交。',
+      'client.reviewQuote': '「作品在呼吸中呈现意图 — 请精炼笔触之间的静默。」',
+      'client.reviewAssessment': '总评：<strong class="text-primary">优秀</strong> — 经小幅修订后可投陪审展览。',
+      'expert.elena.role': '美术策展人', 'expert.julian.role': '建筑史学家', 'expert.vance.role': '古物鉴定师',
+      'expert.elena.bio': '前泰特现代美术馆策展人，二十年当代与古典作品集评审经验。',
+      'expert.julian.bio': '专注二十世纪粗野主义建筑与城市规划，服务于学术与专业出版。',
+      'expert.vance.bio': '资深古物鉴定师，专精十八世纪欧洲手稿与档案来源考证。',
+      'toast.published': '数字分身已上架市集',
+      'toast.upload': '将打开上传对话框',
+      'toast.briefSubmitted': '需求已提交 — 正在匹配专家',
+      'toast.authorized': '咨询已授权 — 专家将在 24 小时内回复'
+    }
+  };
+
+  const EXPERTS = {
+    elena: { name: 'Prof. Elena Rossi', roleKey: 'expert.elena.role', bioKey: 'expert.elena.bio', price: 250, img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCLaKhFuR8HJ62XgApE7zS3q3V5szzHVf4WGGD1qJJQ9WBDAW97yPxpVOM2GBS-BGwIcBe7-q4eESXaZYwvY6ARkDBsVdrcHc7qdCJliCXlYEucUz_MRirP5IOznDSmf36x8vpiXKzmSS4O2p6Lv6tWAY2rKmKPC6N0iA-S2MhXr2VP8Ssaz_HNRDA9cY3twAY4iGJ8wtHy_f1JlbWIIaIJBbWKCnw8JaubuDyTcJCqFv03VMa5SuuXeW29dUsSs_ItPJa24eBMCg', rating: '4.9', reviews: '127', response: '24h' },
+    julian: { name: 'Dr. Julian Hayes', roleKey: 'expert.julian.role', bioKey: 'expert.julian.bio', price: 300, img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBZ7SXBOxArgSziyP3zmqkHtkhsAUJiMl6p6zverWPMyNuukNIx3d0MwtqXNlIX46thw4MPGnVsvNODLygjUWzzsJ4qCTYpq1cacv_JI3zdbmmDIzGwb8I2LNOG3j5uaAL_OcboPZ3pqZOyZg2kefS9KBPzuWYQ2AsxoMg57im52CVwm56Mp57f37mdt4e5_fjkmOWoGbL-yl4JaTMVjpPfI1HR2dKZbE7xiR72wpxj206Ua8Hyt95G1XCuGWuOB4vxfQGnZnkjZQ', rating: '4.8', reviews: '89', response: '48h' },
+    vance: { name: 'Dr. Julian Vance', roleKey: 'expert.vance.role', bioKey: 'expert.vance.bio', price: 280, img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBVjbImO9TbF5uFtLh2RZYbYS-0PRdmlv02gjR5YeNR4-MHT_2UXKTKDJTIO51PKJOU6jaQtom8rehNPkAYWlDJK6jd0Z70bPNsyCa4rVTtOGh6TyJpwulLVOPzWROJL_VUrkKJkgyCaWE469o5t4QgiEpovJ5ruosPaVcnfyEQ8Fnn065ERskPZhD1jzd3cYfaKRAXXZ4u3TPgBhNdnzEc_16gBPkrW2kEz2bUqwsqoztEPEzHW7eOJHJHDV7FbLoHX4zIeiamHA', rating: '4.9', reviews: '64', response: '36h' }
+  };
+
+  const storedLang = localStorage.getItem('kind-lang');
+  const browserLang = (navigator.language || '').toLowerCase().startsWith('zh') ? 'zh' : 'en';
+  const state = { role: null, screen: 'welcome', expert: null, briefStep: 0, history: [], lang: storedLang || browserLang };
+
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+
+  function t(key) { return I18N[state.lang]?.[key] ?? I18N.en[key] ?? key; }
+
+  function applyI18n() {
+    document.documentElement.lang = state.lang === 'zh' ? 'zh-CN' : 'en';
+    $$('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+    $$('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
+    $$('[data-i18n-placeholder]').forEach(el => { el.placeholder = t(el.dataset.i18nPlaceholder); });
+    const titleEl = document.querySelector('title[data-i18n]');
+    if (titleEl) titleEl.textContent = t(titleEl.dataset.i18n);
+
+    const navExpert = $('#nav-expert');
+    if (navExpert) {
+      const labels = navExpert.querySelectorAll('.nav-item .font-label');
+      ['nav.hub', 'nav.train', 'nav.inbox', 'nav.vault'].forEach((k, i) => { if (labels[i]) labels[i].textContent = t(k); });
+    }
+    const navClient = $('#nav-client');
+    if (navClient) {
+      const labels = navClient.querySelectorAll('.nav-item .font-label');
+      ['nav.market', 'nav.brief', 'nav.requests'].forEach((k, i) => { if (labels[i]) labels[i].textContent = t(k); });
+    }
+
+    applyScreenCopy();
+    updateExpertCards();
+    updateBriefUI();
+    if (state.expert) refreshExpertDetail();
+    if (state.screen === 'checkout' && state.expert) refreshCheckout();
+    if (state.screen === 'success-checkout' && state.expert) refreshSuccessCheckout();
+    $$('.lang-btn').forEach(btn => {
+      const on = btn.dataset.lang === state.lang;
+      btn.classList.toggle('active', on);
+      btn.classList.toggle('text-on-surface-variant', !on);
+      btn.setAttribute('aria-pressed', on);
+    });
+  }
+
+  function applyScreenCopy() {
+    try {
+    const hub = $('#screen-e-hub');
+    if (hub) {
+      const sub = hub.querySelector('header .font-label');
+      if (sub) sub.textContent = t('expert.hub');
+      const keys = {
+        '[data-i18n-key="twinProfile"]': 'expert.twinProfile',
+        '[data-i18n-key="twinBio"]': 'expert.twinBio',
+        '[data-i18n-key="synchronized"]': 'expert.synchronized',
+        '[data-i18n-key="knowledgeBase"]': 'expert.knowledgeBase',
+        '[data-i18n-key="personaDepth"]': 'expert.personaDepth',
+        '[data-i18n-key="pressureTests"]': 'expert.pressureTests',
+        '[data-i18n-key="viewAll"]': 'expert.viewAll',
+        '[data-i18n-key="test1"]': 'expert.test1',
+        '[data-i18n-key="test2"]': 'expert.test2',
+        '[data-i18n-key="test3"]': 'expert.test3',
+        '[data-i18n-key="refining"]': 'expert.refining',
+        '[data-i18n-key="readyBadge"]': 'expert.readyBadge',
+        '[data-i18n-key="readyDesc"]': 'expert.readyDesc',
+        '[data-i18n-key="journeyTrain"]': 'expert.journeyTrain',
+        '[data-i18n-key="journeyTest"]': 'expert.journeyTest',
+        '[data-i18n-key="journeyPublish"]': 'expert.journeyPublish'
+      };
+      Object.entries(keys).forEach(([sel, key]) => { const el = hub.querySelector(sel); if (el) el.textContent = t(key); });
+      hub.querySelectorAll('[data-i18n-key="success"]').forEach(el => { el.textContent = t('expert.success'); });
+      const pub = $('#publish-btn span.font-headline');
+      if (pub) pub.textContent = t('expert.publish');
+    }
+
+    const train = $('#screen-e-training');
+    if (train) {
+      const trainH1 = train.querySelector('header h1');
+      if (trainH1) trainH1.textContent = t('expert.trainingTitle');
+      train.querySelector('[data-tab="training"]').textContent = t('expert.inTraining');
+      train.querySelector('[data-tab="ready"]').textContent = t('expert.ready');
+      $('#upload-zone h3').textContent = t('expert.uploadTitle');
+      $('#upload-zone p.font-body').textContent = t('expert.uploadDesc');
+      $('#upload-zone .font-label.text-tertiary').textContent = t('expert.uploadLimit');
+      const activeModH3 = $('#panel-training section h3');
+      if (activeModH3) activeModH3.textContent = t('expert.activeModules');
+      const mods = $('#panel-training .rounded-xl.p-5')?.querySelectorAll('.font-body.font-medium');
+      if (mods?.[0]) mods[0].textContent = t('expert.mod1');
+      if (mods?.[1]) mods[1].textContent = t('expert.mod2');
+      if (mods?.[2]) mods[2].textContent = t('expert.mod3');
+      const runBtn = $('#panel-training button.w-full');
+      if (runBtn) runBtn.textContent = t('expert.runTest');
+      $('#panel-ready h3').textContent = t('expert.twinReady');
+      $('#panel-ready p').textContent = t('expert.twinReadyDesc');
+      $('#ready-publish').textContent = t('expert.proceedPublish');
+    }
+
+    const inbox = $('#screen-e-inbox');
+    if (inbox) {
+      inbox.querySelector('header h1').textContent = t('expert.inboxTitle');
+      inbox.querySelector('header .bg-tertiary-fixed').textContent = t('expert.newCount');
+      const items = inbox.querySelectorAll('.inbox-item');
+      if (items[0]) {
+        const badge0 = items[0].querySelector('.font-label.uppercase');
+        if (badge0) badge0.textContent = t('expert.statusNew');
+        items[0].querySelector('h3').textContent = t('expert.inbox1Title');
+        items[0].querySelector('p.font-body').textContent = t('expert.inbox1Meta');
+        items[0].querySelector('.inbox-detail p').textContent = t('expert.inbox1Desc');
+        const btns = items[0].querySelectorAll('.inbox-detail button');
+        if (btns[0]) btns[0].textContent = t('expert.acceptBrief');
+        if (btns[1]) btns[1].textContent = t('expert.decline');
+      }
+      if (items[1]) {
+        const badge1 = items[1].querySelector('.font-label.uppercase');
+        if (badge1) badge1.textContent = t('expert.inProgress');
+        items[1].querySelector('h3').textContent = t('expert.inbox2Title');
+        items[1].querySelector('p.font-body').textContent = t('expert.inbox2Meta');
+        items[1].querySelector('textarea').placeholder = t('expert.draftPlaceholder');
+        items[1].querySelector('.inbox-detail button').textContent = t('expert.sendResponse');
+      }
+      if (items[2]) {
+        items[2].querySelector('.font-label').textContent = t('expert.delivered');
+        items[2].querySelector('h3').textContent = t('expert.inbox3Title');
+        items[2].querySelector('p').textContent = t('expert.inbox3Meta');
+      }
+    }
+
+    const vault = $('#screen-e-vault');
+    if (vault) {
+      vault.querySelector('header h1').textContent = t('expert.vaultTitle');
+      vault.querySelector('header p').textContent = t('expert.vaultSubtitle');
+      vault.querySelector('[data-vault="active"]').textContent = t('expert.active');
+      vault.querySelector('[data-vault="archived"]').textContent = t('expert.archived');
+      vault.querySelector('[data-i18n-key="totalRevenue"]').textContent = t('expert.totalRevenue');
+      vault.querySelector('[data-i18n-key="revenueGrowth"]').textContent = t('expert.revenueGrowth');
+      const arts = vault.querySelectorAll('#vault-active article');
+      if (arts[0]) { arts[0].querySelector('h4').textContent = t('expert.asset1'); arts[0].querySelector('p').textContent = t('expert.asset1Meta'); }
+      if (arts[1]) { arts[1].querySelector('h4').textContent = t('expert.asset2'); arts[1].querySelector('p').textContent = t('expert.asset2Meta'); }
+      vault.querySelectorAll('[data-i18n-key="live"]').forEach(el => {
+        el.innerHTML = '<span class="w-2 h-2 rounded-full bg-primary"></span> ' + t('common.live');
+      });
+      if (arts[2]) { arts[2].querySelector('h4').textContent = t('expert.asset3'); arts[2].querySelector('p').textContent = t('expert.asset3Meta'); }
+      $('#vault-archived').textContent = t('expert.noArchived');
+    }
+
+    const market = $('#screen-c-market');
+    if (market) {
+      market.querySelector('input[type=search]').placeholder = t('client.searchPlaceholder');
+      const chips = market.querySelectorAll('.filter-chip');
+      ['client.fineArt', 'client.architecture', 'client.literature', 'client.philosophy'].forEach((k, i) => { if (chips[i]) chips[i].textContent = t(k); });
+      const bannerH2 = market.querySelector('section.relative h2');
+      if (bannerH2) bannerH2.innerHTML = t('client.bannerTitle');
+      const bannerP = market.querySelector('section.relative p');
+      if (bannerP) bannerP.textContent = t('client.bannerDesc');
+      const briefBtn = market.querySelector('[data-target="c-brief"]');
+      if (briefBtn) briefBtn.textContent = t('client.createBrief');
+      const featH3 = market.querySelector('section.space-y-6 > h3');
+      if (featH3) featH3.textContent = t('client.featuredMentors');
+      const topAuth = market.querySelector('[data-expert="elena"] .font-label.uppercase');
+      if (topAuth) topAuth.textContent = t('client.topAuthority');
+    }
+
+    const brief = $('#screen-c-brief');
+    if (brief) {
+      brief.querySelector('header h1').textContent = t('client.briefTitle');
+      const steps = ['client.step1', 'client.step2', 'client.step3', 'client.step4'];
+      brief.querySelectorAll('.brief-panel > .font-label').forEach((el, i) => { el.textContent = t(steps[i]); });
+      const qs = ['client.q1', 'client.q2', 'client.q3', 'client.q4'];
+      brief.querySelectorAll('.brief-panel > h2').forEach((el, i) => { el.textContent = t(qs[i]); });
+      brief.querySelector('input[type=text]').placeholder = t('client.placeholder1');
+      brief.querySelector('textarea').placeholder = t('client.placeholder2');
+      const tags = brief.querySelectorAll('.brief-panel:last-child label span');
+      ['client.fineArt', 'client.architecture', 'client.literature', 'client.philosophy'].forEach((k, i) => { if (tags[i]) tags[i].textContent = t(k); });
+    }
+
+    const reqs = $('#screen-c-requests');
+    if (reqs) {
+      reqs.querySelector('header h1').textContent = t('client.requestsTitle');
+      const cards = reqs.querySelectorAll('.request-card');
+      if (cards[0]) {
+        const st0 = cards[0].querySelector('.font-label.uppercase');
+        if (st0) st0.textContent = t('client.inReview');
+        cards[0].querySelector('h3').textContent = t('client.req1Title');
+        cards[0].querySelector('p.font-body').textContent = t('client.req1Meta');
+        cards[0].querySelector('.request-feedback .font-label').textContent = t('client.expertFeedback');
+        cards[0].querySelector('.request-feedback .font-body').textContent = t('client.feedbackPreview');
+        cards[0].querySelector('[data-target="c-review"]').textContent = t('client.readFull');
+      }
+      if (cards[1]) {
+        cards[1].querySelector('.font-label').textContent = t('client.pendingMatch');
+        cards[1].querySelector('h3').textContent = t('client.req2Title');
+        cards[1].querySelector('p').textContent = t('client.req2Meta');
+      }
+      if (cards[2]) {
+        cards[2].querySelector('.font-label').textContent = t('client.completed');
+        cards[2].querySelector('h3').textContent = t('client.req3Title');
+        cards[2].querySelector('p').textContent = t('client.req3Meta');
+      }
+    }
+
+    const detail = $('#screen-c-detail');
+    if (detail) {
+      detail.querySelector('.font-label.uppercase').textContent = t('client.verified');
+      const stats = detail.querySelectorAll('.grid .font-label');
+      if (stats[0]) stats[0].textContent = t('client.rating');
+      if (stats[1]) stats[1].textContent = t('client.reviews');
+      if (stats[2]) stats[2].textContent = t('client.response');
+      detail.querySelector('.bg-surface-container-low .font-label').textContent = t('client.professionalReview');
+      $('#detail-hire').textContent = t('client.hireExpert');
+    }
+
+    const checkout = $('#screen-checkout');
+    if (checkout) {
+      checkout.querySelector('.nav-to .font-label').textContent = t('common.back');
+      checkout.querySelector('h1').textContent = t('client.finalize');
+      checkout.querySelector('main > div > p').textContent = t('client.checkoutDesc');
+      checkout.querySelector('article .font-label').textContent = t('client.consultingExpert');
+      $('#checkout-service').textContent = t('client.professionalReview');
+      const rows = checkout.querySelectorAll('.space-y-3 > div');
+      if (rows[0]) rows[0].querySelector('span:first-child').textContent = t('client.serviceFee');
+      if (rows[1]) rows[1].querySelector('span:first-child').textContent = t('client.platformFee');
+      if (rows[2]) rows[2].querySelector('span:first-child').textContent = t('common.total');
+      checkout.querySelector('.ghost-border > .font-label').textContent = t('client.payment');
+      checkout.querySelector('.ghost-border .font-label.text-primary').textContent = t('common.change');
+      checkout.querySelector('.ghost-border .text-xs').textContent = t('client.expires');
+    }
+
+    const review = $('#screen-c-review');
+    if (review) {
+      review.querySelector('header h1').textContent = t('client.reviewTitle');
+      review.querySelector('.flex.items-center .font-label').textContent = t('client.reviewMeta');
+      const ps = review.querySelectorAll('article p');
+      if (ps[0]) ps[0].textContent = t('client.reviewP1');
+      if (ps[1]) ps[1].textContent = t('client.reviewP2');
+      if (ps[2]) ps[2].innerHTML = t('client.reviewAssessment');
+      review.querySelector('blockquote').textContent = t('client.reviewQuote');
+    }
+    } catch (err) { console.warn('applyScreenCopy:', err); }
+  }
+
+  function updateExpertCards() {
+    $$('.expert-card').forEach(card => {
+      const id = card.dataset.expert;
+      const e = EXPERTS[id];
+      if (!e) return;
+      const roleEl = card.querySelector('p.font-body.text-sm');
+      if (roleEl) roleEl.textContent = t(e.roleKey);
+      const priceEl = card.querySelector('.font-label.text-sm.text-on-surface');
+      if (priceEl) priceEl.textContent = '€' + e.price + ' ' + t('client.perReview');
+      const hireBtn = card.querySelector('.hire-btn');
+      if (hireBtn) hireBtn.textContent = t('client.hire');
+    });
+  }
+
+  function refreshExpertDetail() {
+    const e = EXPERTS[state.expert];
+    if (!e) return;
+    $('#detail-name').textContent = e.name;
+    $('#detail-title').textContent = e.name;
+    $('#detail-role').textContent = t(e.roleKey);
+    $('#detail-bio').textContent = t(e.bioKey);
+    $('#detail-price').textContent = '€' + e.price;
+  }
+
+  function refreshCheckout() {
+    const e = EXPERTS[state.expert];
+    if (!e) return;
+    const total = e.price + 12;
+    $('#checkout-name').textContent = e.name;
+    $('#checkout-fee').textContent = '€' + e.price;
+    $('#checkout-total').textContent = '€' + total;
+    const authorize = state.lang === 'zh' ? `授权支付 €${total}` : `Authorize €${total}`;
+    $('#confirm-pay').textContent = authorize;
+  }
+
+  function refreshSuccessCheckout() {
+    const e = EXPERTS[state.expert];
+    const el = $('#success-checkout-expert');
+    if (!el || !e) return;
+    el.textContent = state.lang === 'zh' ? `专家：${e.name}` : `Expert: ${e.name}`;
+  }
+
+  function setLang(lang) {
+    state.lang = lang;
+    localStorage.setItem('kind-lang', lang);
+    applyI18n();
+  }
+
+  function showToast(msgKey) {
+    const msg = typeof msgKey === 'string' && msgKey.startsWith('toast.') ? t(msgKey) : msgKey;
+    const toastEl = $('#toast');
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    setTimeout(() => toastEl.classList.remove('show'), 3200);
+  }
+
+  function updateNav() {
+    const nav = $('#bottom-nav');
+    const expertNav = $('#nav-expert');
+    const clientNav = $('#nav-client');
+    const hideNavScreens = ['welcome', 'checkout', 'c-detail', 'c-review', 'success-brief', 'success-checkout', 'success-publish'];
+
+    if (!state.role || hideNavScreens.includes(state.screen)) {
+      nav.classList.add('nav-hidden');
+      return;
+    }
+    nav.classList.remove('nav-hidden');
+    expertNav.classList.toggle('nav-hidden', state.role !== 'expert');
+    clientNav.classList.toggle('nav-hidden', state.role !== 'client');
+    expertNav.classList.toggle('flex', state.role === 'expert');
+    clientNav.classList.toggle('flex', state.role === 'client');
+
+    const activeNav = state.role === 'expert' ? expertNav : clientNav;
+    $$('.nav-item', activeNav).forEach(btn => {
+      const active = btn.dataset.target === state.screen;
+      btn.classList.toggle('text-primary', active);
+      btn.classList.toggle('border-t-2', active);
+      btn.classList.toggle('border-primary', active);
+      btn.classList.toggle('text-secondary', !active);
+      const icon = $('span.material-symbols-outlined', btn);
+      if (icon) icon.classList.toggle('filled-icon', active);
+    });
+  }
+
+  function animateProgressRing() {
+    const ring = $('#progress-ring');
+    const pctEl = $('#progress-pct');
+    if (!ring || state.screen !== 'e-hub') return;
+    const pct = 84;
+    const circumference = 339.292;
+    ring.style.strokeDashoffset = circumference;
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        ring.style.strokeDashoffset = circumference * (1 - pct / 100);
+        if (pctEl) pctEl.textContent = pct + '%';
+      }, 200);
+    });
+  }
+
+  function navigate(screen, pushHistory = true) {
+    if (pushHistory && state.screen !== screen && state.screen !== 'welcome') {
+      state.history.push(state.screen);
+    }
+
+    $$('.screen').forEach(s => {
+      s.classList.remove('active', 'welcome-active');
+    });
+
+    const el = $(`#screen-${screen}`);
+    if (!el) return;
+
+    if (screen === 'welcome') {
+      el.classList.add('welcome-active');
+      state.role = null;
+      state.history = [];
+    } else {
+      el.classList.add('active');
+    }
+
+    state.screen = screen;
+    updateNav();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (screen === 'e-hub') setTimeout(animateProgressRing, 100);
+  }
+
+  function navigateBack(fallback) {
+    const prev = state.history.pop();
+    if (prev) navigate(prev, false);
+    else if (fallback) navigate(fallback, false);
+  }
+
+  function openExpert(id) {
+    const e = EXPERTS[id];
+    if (!e) return;
+    state.expert = id;
+    $('#detail-img').src = e.img;
+    $('#detail-img').alt = e.name;
+    $('#detail-rating').textContent = e.rating;
+    $('#detail-reviews').textContent = e.reviews;
+    $('#detail-response').textContent = e.response;
+    refreshExpertDetail();
+    navigate('c-detail', true);
+  }
+
+  function openCheckout() {
+    const e = EXPERTS[state.expert];
+    if (!e) return;
+    $('#checkout-img').src = e.img;
+    refreshCheckout();
+    navigate('checkout', true);
+  }
+
+  // Role selection
+  $$('.role-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.role = btn.dataset.role;
+      state.history = [];
+      navigate(state.role === 'expert' ? 'e-hub' : 'c-market', false);
+    });
+  });
+
+  // Navigation
+  $$('.nav-to, .nav-item').forEach(el => {
+    el.addEventListener('click', () => {
+      const target = el.dataset.target;
+      if (target === 'welcome') { state.history = []; navigate('welcome', false); return; }
+      if (el.dataset.resetHistory === 'true') state.history = [];
+      if (el.dataset.back === 'true') { navigateBack(target); return; }
+      if (el.classList.contains('nav-item')) state.history = [];
+      navigate(target);
+    });
+  });
+
+  // Expert cards & hire
+  $$('.expert-card').forEach(card => {
+    card.addEventListener('click', e => {
+      if (e.target.closest('.hire-btn')) return;
+      openExpert(card.dataset.expert);
+    });
+  });
+  $$('.hire-btn').forEach(btn => {
+    btn.addEventListener('click', e => { e.stopPropagation(); openExpert(btn.dataset.expert); });
+  });
+
+  $('#detail-hire')?.addEventListener('click', openCheckout);
+
+  // Publish
+  $$('.lang-btn').forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
+
+  $('#publish-btn')?.addEventListener('click', () => {
+    state.history = [];
+    navigate('success-publish', false);
+  });
+  $('#ready-publish')?.addEventListener('click', () => navigate('e-hub'));
+
+  // Training tabs
+  $$('.training-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      $$('.training-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const isReady = tab.dataset.tab === 'ready';
+      $('#panel-training').classList.toggle('hidden', isReady);
+      $('#panel-ready').classList.toggle('hidden', !isReady);
+    });
+  });
+
+  $('#upload-zone')?.addEventListener('click', () => showToast('toast.upload'));
+
+  // Vault tabs
+  $$('.vault-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      $$('.vault-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const archived = tab.dataset.vault === 'archived';
+      $('#vault-active').classList.toggle('hidden', archived);
+      $('#vault-archived').classList.toggle('hidden', !archived);
+    });
+  });
+
+  // Inbox expand
+  $$('.inbox-item[data-expand]').forEach(item => {
+    item.addEventListener('click', () => {
+      const wasExpanded = item.classList.contains('expanded');
+      $$('.inbox-item').forEach(i => i.classList.remove('expanded'));
+      if (!wasExpanded) item.classList.add('expanded');
+      const icon = $('.expand-icon', item);
+      if (icon) icon.textContent = item.classList.contains('expanded') ? 'expand_less' : 'expand_more';
+    });
+  });
+
+  // Request expand
+  $$('.request-card[data-expand]').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('expanded'));
+  });
+
+  // Filter chips
+  $$('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      $$('.filter-chip').forEach(c => { c.classList.remove('active'); c.classList.add('ghost-border'); });
+      chip.classList.add('active');
+      chip.classList.remove('ghost-border');
+    });
+  });
+
+  // Brief form steps
+  const briefPanels = $$('.brief-panel');
+  const stepDots = $$('.step-dot');
+  const briefPrev = $('#brief-prev');
+  const briefNext = $('#brief-next');
+
+  function updateBriefUI() {
+    briefPanels.forEach((p, i) => p.classList.toggle('active', i === state.briefStep));
+    stepDots.forEach((d, i) => d.classList.toggle('active', i === state.briefStep));
+    briefPrev.classList.toggle('opacity-50', state.briefStep === 0);
+    briefPrev.classList.toggle('pointer-events-none', state.briefStep === 0);
+    briefPrev.textContent = t('client.briefBack');
+    briefNext.textContent = state.briefStep === 3 ? t('client.briefSubmit') : t('client.briefContinue');
+  }
+
+  let briefSubmitting = false;
+  briefNext?.addEventListener('click', () => {
+    if (briefSubmitting) return;
+    if (state.briefStep < 3) {
+      state.briefStep++;
+      updateBriefUI();
+      $('#screen-c-brief main')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+    briefSubmitting = true;
+    briefNext.disabled = true;
+    state.briefStep = 0;
+    updateBriefUI();
+    state.history = [];
+    briefSubmitting = false;
+    briefNext.disabled = false;
+    navigate('success-brief', false);
+  });
+  briefPrev?.addEventListener('click', () => { if (state.briefStep > 0) { state.briefStep--; updateBriefUI(); } });
+
+  $('#confirm-pay')?.addEventListener('click', () => {
+    refreshSuccessCheckout();
+    state.history = [];
+    navigate('success-checkout', false);
+  });
+
+  $('#review-share')?.addEventListener('click', () => showToast('toast.shareReview'));
+  $('#review-download')?.addEventListener('click', () => showToast('toast.downloadPdf'));
+
+  applyI18n();
+  updateBriefUI();
+  navigate('welcome', false);
+})();
+</script>
+<style>
+  .editorial-dropcap::first-letter {
+    float: left; font-size: 3.5rem; line-height: 0.85; padding-right: 0.5rem;
+    font-family: 'Noto Serif', serif; color: #094cb2;
+  }
+</style>
+</body>
+</html>

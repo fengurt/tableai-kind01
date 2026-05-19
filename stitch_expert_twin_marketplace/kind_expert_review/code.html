@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review Detail - KiND</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "surface-container": "#efedee",
+                        "surface-tint": "#2259bf",
+                        "surface": "#faf9fa",
+                        "on-surface": "#1b1c1d",
+                        "secondary-container": "#dfe3e8",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#303031",
+                        "on-secondary-fixed-variant": "#42474b",
+                        "primary-container": "#3366cc",
+                        "secondary": "#5a5f63",
+                        "primary-fixed-dim": "#b1c5ff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#211b00",
+                        "on-background": "#1b1c1d",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e9e8e9",
+                        "outline-variant": "#c3c6d5",
+                        "on-tertiary-container": "#4a3f00",
+                        "tertiary-container": "#bfab49",
+                        "surface-variant": "#e3e2e3",
+                        "on-primary-fixed": "#001946",
+                        "surface-dim": "#dbdadb",
+                        "tertiary": "#6d5e00",
+                        "surface-container-highest": "#e3e2e3",
+                        "on-primary-container": "#e7ebff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#606569",
+                        "inverse-on-surface": "#f2f0f1",
+                        "primary-fixed": "#d9e2ff",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#c2c7cc",
+                        "inverse-primary": "#b1c5ff",
+                        "surface-container-low": "#f5f3f4",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#171c20",
+                        "surface-bright": "#faf9fa",
+                        "primary": "#094cb2",
+                        "outline": "#737784",
+                        "on-surface-variant": "#434653",
+                        "secondary-fixed": "#dfe3e8",
+                        "on-primary-fixed-variant": "#00419d",
+                        "on-tertiary-fixed-variant": "#524600",
+                        "tertiary-fixed-dim": "#dcc661",
+                        "tertiary-fixed": "#f9e37a",
+                        "background": "#faf9fa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Noto Serif", "serif"],
+                        "display": ["Noto Serif", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Public Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .symbol-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* High-end editorial nuances */
+        .editorial-dropcap::first-letter {
+            float: left;
+            font-size: 4rem;
+            line-height: 0.8;
+            padding-right: 0.75rem;
+            padding-top: 0.5rem;
+            font-family: 'Noto Serif', serif;
+            color: #094cb2;
+        }
+        
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Ghost border for cards */
+        .ghost-border {
+            border: 1px solid rgba(195, 198, 213, 0.15); /* outline-variant at 15% */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body antialiased pb-24 selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-surface-container-lowest dark:bg-surface-dim shadow-sm">
+<div class="flex items-center gap-4">
+<button aria-label="Go back" class="text-on-surface-variant hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<img alt="Expert Avatar" class="w-10 h-10 rounded-full object-cover ghost-border" data-alt="A professional headshot of an elegant woman with subtle makeup and natural hair, soft natural lighting, high-end editorial style portrait, clear white background, warm muted tones aligning with a premium digital scholarly aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLIVPdHaJJMQ3PX_7pxWd-nn1gsGDPNE17dDr6AyGQCnzCb_-2cqHMaA2gx1rzYX8PejxJVdDzq7xBSd8DE2QR5kSZUQtSIt-uASVBG2TnDw2IHj2ioRUC_qmo7ok5R26_yk18n4QVH9fuyVF8z7oeNPD6fR0eBaJrSJaYLBQAhK987RmKHZLIO_Hxj-4ll8pQlLkxUzbiyF6sAEnd3aVOz1eKoNTZ4NVeblP2JNaSgztzZ-eAhzIfAZkfDgqilglyQJ5Lnpgu1A"/>
+</div>
+<h1 class="font-headline text-2xl italic font-semibold text-on-surface dark:text-on-background tracking-tight">KiND</h1>
+<button aria-label="Menu" class="text-on-surface-variant hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 px-4 md:px-8 max-w-4xl mx-auto flex flex-col gap-12">
+<!-- Header / Context Section -->
+<section class="flex flex-col gap-6 animate-fade-in-up">
+<div class="flex flex-col items-center text-center gap-4">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-high rounded-full font-label text-xs tracking-widest uppercase text-tertiary mb-2">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                    Review Completed
+                </div>
+<h1 class="font-headline text-4xl md:text-5xl font-medium tracking-tight text-on-surface leading-tight">
+                    Brand Strategy Synthesis
+                </h1>
+<p class="font-label text-sm text-on-surface-variant uppercase tracking-widest mt-2">
+                    Prepared by Dr. Elena Rostova • Oct 24, 2023
+                </p>
+</div>
+<!-- Original Brief Summary (Bento Grid Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+<div class="md:col-span-2 bg-surface-container-low p-6 rounded-xl ghost-border flex flex-col justify-between">
+<div>
+<h3 class="font-label text-xs uppercase tracking-widest text-secondary mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">description</span>
+                            Original Brief Focus
+                        </h3>
+<p class="font-body text-on-surface leading-relaxed text-sm md:text-base">
+                            "Looking for strategic alignment on our upcoming Q4 product launch targeting millennial demographics in urban centers. Need assessment on messaging clarity and potential market friction points."
+                        </p>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-xl ghost-border flex flex-col gap-4">
+<h3 class="font-label text-xs uppercase tracking-widest text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">category</span>
+                        Parameters
+                    </h3>
+<ul class="font-body text-sm text-on-surface-variant space-y-2">
+<li class="flex justify-between border-b border-surface-variant pb-1"><span>Format</span> <span class="text-on-surface font-medium">Deep Dive</span></li>
+<li class="flex justify-between border-b border-surface-variant pb-1"><span>Industry</span> <span class="text-on-surface font-medium">Retail Tech</span></li>
+<li class="flex justify-between"><span>Duration</span> <span class="text-on-surface font-medium">48h Turnaround</span></li>
+</ul>
+</div>
+</div>
+</section>
+<!-- The Analysis (Editorial Canvas) -->
+<article class="bg-surface-container-lowest shadow-sm rounded-xl ghost-border p-6 md:p-12 space-y-10 relative overflow-hidden">
+<!-- Decorative accent -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-primary-container to-surface-container-lowest"></div>
+<section>
+<h2 class="font-headline text-2xl md:text-3xl font-medium text-on-surface mb-6 border-b border-surface-variant pb-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">visibility</span>
+                    Observations
+                </h2>
+<div class="font-body text-on-surface leading-loose space-y-6 text-base md:text-lg">
+<p class="editorial-dropcap">
+                        The current messaging framework exhibits significant potential but currently suffers from an internal contradiction regarding value proposition. While the visuals imply a premium, exclusive service, the core copy leans heavily into mass-market accessibility.
+                    </p>
+<p>
+                        In reviewing your Q4 collateral, specifically the main landing page drafts and the proposed social ad copy, there is a clear disconnect between the 'hero' statements and the supporting evidence. The urban millennial demographic you are targeting typically demonstrates high skepticism towards claims of 'revolutionary' technology without immediate, transparent proof-of-concept.
+                    </p>
+<div class="my-8 p-6 bg-surface-container-low rounded-lg ghost-border border-l-4 border-l-tertiary">
+<h4 class="font-label text-sm uppercase tracking-widest text-tertiary mb-2">Key Finding</h4>
+<p class="font-headline italic text-lg text-on-surface">"The friction does not lie in the product's utility, but in the narrative bridging the user's current reality to the product's promised future."</p>
+</div>
+</div>
+</section>
+<section>
+<h2 class="font-headline text-2xl md:text-3xl font-medium text-on-surface mb-6 border-b border-surface-variant pb-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">strategy</span>
+                    Strategic Recommendations
+                </h2>
+<div class="space-y-6">
+<!-- Recommendation Cards -->
+<div class="flex gap-4 items-start p-5 bg-surface rounded-xl ghost-border hover:bg-surface-container transition-colors duration-300">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label font-bold flex-shrink-0 mt-1">1</div>
+<div>
+<h3 class="font-headline text-xl text-on-surface mb-2">Realign the Value Hierarchy</h3>
+<p class="font-body text-on-surface-variant text-sm md:text-base leading-relaxed">
+                                Shift the primary messaging focus from 'cost-saving' to 'time-creation'. For your target demographic, time is the ultimate luxury metric. Restructure the landing page hierarchy to feature use-cases that highlight efficiency over economy.
+                            </p>
+</div>
+</div>
+<div class="flex gap-4 items-start p-5 bg-surface rounded-xl ghost-border hover:bg-surface-container transition-colors duration-300">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label font-bold flex-shrink-0 mt-1">2</div>
+<div>
+<h3 class="font-headline text-xl text-on-surface mb-2">Ground the Abstraction</h3>
+<p class="font-body text-on-surface-variant text-sm md:text-base leading-relaxed">
+                                Replace generic lifestyle imagery with concrete, UI-focused visuals or authentic user-generated style content. The aesthetic should shift from 'aspirational stock' to 'documentary reality'.
+                            </p>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h2 class="font-headline text-2xl md:text-3xl font-medium text-on-surface mb-6 border-b border-surface-variant pb-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">book</span>
+                    References &amp; Further Reading
+                </h2>
+<ul class="space-y-3 font-body text-sm md:text-base">
+<li>
+<a class="group flex items-center gap-3 text-on-surface-variant hover:text-primary transition-colors p-3 rounded-lg hover:bg-surface-container-low ghost-border border-transparent" href="#">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors">link</span>
+<span>Case Study: Glossier's Demographic Pivot (2019)</span>
+<span class="material-symbols-outlined text-[16px] ml-auto opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</a>
+</li>
+<li>
+<a class="group flex items-center gap-3 text-on-surface-variant hover:text-primary transition-colors p-3 rounded-lg hover:bg-surface-container-low ghost-border border-transparent" href="#">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors">picture_as_pdf</span>
+<span>Millennial Trust Metrics Report (Q2 2023)</span>
+<span class="material-symbols-outlined text-[16px] ml-auto opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</a>
+</li>
+</ul>
+</section>
+</article>
+<!-- Actions & Rating Section -->
+<section class="bg-surface-container-high rounded-xl p-6 md:p-8 flex flex-col md:flex-row gap-8 items-center justify-between mb-8 ghost-border">
+<div class="flex-1 w-full text-center md:text-left space-y-4">
+<h3 class="font-headline text-xl text-on-surface">Rate this analysis</h3>
+<p class="font-body text-sm text-on-surface-variant">Your feedback helps maintain the quality of our curator network.</p>
+<div class="flex items-center justify-center md:justify-start gap-2 text-outline-variant">
+<button class="hover:text-tertiary transition-colors"><span class="material-symbols-outlined text-3xl">star</span></button>
+<button class="hover:text-tertiary transition-colors"><span class="material-symbols-outlined text-3xl">star</span></button>
+<button class="hover:text-tertiary transition-colors"><span class="material-symbols-outlined text-3xl">star</span></button>
+<button class="hover:text-tertiary transition-colors"><span class="material-symbols-outlined text-3xl">star</span></button>
+<button class="hover:text-tertiary transition-colors"><span class="material-symbols-outlined text-3xl">star</span></button>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+<button class="font-label uppercase tracking-wider text-sm px-6 py-3 rounded-full bg-surface-container-lowest text-primary ghost-border hover:bg-surface-container transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">forum</span>
+                    Follow-up
+                </button>
+<button class="font-label uppercase tracking-wider text-sm px-6 py-3 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary shadow-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">done_all</span>
+                    Mark Complete
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-16 bg-surface-container-lowest/80 dark:bg-surface-dim/80 backdrop-blur-xl">
+<button aria-label="Hub" class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim pt-2 hover:text-primary-container dark:hover:text-primary-fixed-dim transition-all w-16">
+<span class="material-symbols-outlined mb-1">architecture</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Hub</span>
+</button>
+<button aria-label="Market" class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim pt-2 hover:text-primary-container dark:hover:text-primary-fixed-dim transition-all w-16">
+<span class="material-symbols-outlined mb-1">auto_awesome</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Market</span>
+</button>
+<button aria-current="page" aria-label="Requests" class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary border-t-2 border-primary pt-2 scale-95 duration-150 w-16">
+<span class="material-symbols-outlined symbol-filled mb-1">post_add</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Requests</span>
+</button>
+<button aria-label="Vault" class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim pt-2 hover:text-primary-container dark:hover:text-primary-fixed-dim transition-all w-16">
+<span class="material-symbols-outlined mb-1">history_edu</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Vault</span>
+</button>
+</nav>
+</body></html>

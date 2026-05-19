@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KiND - Expert Request Inbox</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001946",
+                        "surface-container-highest": "#e3e2e3",
+                        "inverse-surface": "#303031",
+                        "tertiary-fixed": "#f9e37a",
+                        "inverse-on-surface": "#f2f0f1",
+                        "outline": "#737784",
+                        "surface-dim": "#dbdadb",
+                        "on-primary-fixed-variant": "#00419d",
+                        "secondary-fixed": "#dfe3e8",
+                        "on-background": "#1b1c1d",
+                        "secondary": "#5a5f63",
+                        "primary-container": "#3366cc",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1b1c1d",
+                        "tertiary": "#6d5e00",
+                        "on-surface-variant": "#434653",
+                        "on-secondary-fixed-variant": "#42474b",
+                        "primary-fixed": "#d9e2ff",
+                        "secondary-container": "#dfe3e8",
+                        "primary": "#094cb2",
+                        "on-tertiary-fixed-variant": "#524600",
+                        "on-secondary-container": "#606569",
+                        "outline-variant": "#c3c6d5",
+                        "on-tertiary-fixed": "#211b00",
+                        "surface-container-low": "#f5f3f4",
+                        "surface-container": "#efedee",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#4a3f00",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "background": "#faf9fa",
+                        "surface-tint": "#2259bf",
+                        "on-secondary-fixed": "#171c20",
+                        "inverse-primary": "#b1c5ff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#b1c5ff",
+                        "on-primary-container": "#e7ebff",
+                        "tertiary-container": "#bfab49",
+                        "surface": "#faf9fa",
+                        "secondary-fixed-dim": "#c2c7cc",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#dcc661",
+                        "surface-container-high": "#e9e8e9",
+                        "surface-bright": "#faf9fa",
+                        "surface-variant": "#e3e2e3"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif", "serif"],
+                        "display": ["Noto Serif", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Public Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Ghost Border utility based on rules */
+        .ghost-border {
+            border: 1px solid rgba(195, 198, 213, 0.15); /* outline-variant at 15% */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-4">
+<!-- Leading Avatar -->
+<button class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface-container-lowest">
+<img alt="Expert profile picture" class="w-full h-full object-cover" data-alt="A professional headshot of a female architectural expert with a scholarly demeanor, wearing a tailored blazer. The lighting is soft and natural, suggesting an intellectual, high-end editorial aesthetic. The background is a subtle, out-of-focus light gray studio setting, perfectly matching a pristine, light-mode web interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC38CKM79egVyzMUDrjtdE8QCJGrpWnbi3H70V2SH3SfZKyg8BsA9olcFJ4A53mMmbGzerS_OlKiRFV_SeKSTZeZGtQu2lkh9wvf-Z11YlUirKOYf5mYTq6Q-6zwXDN2ShD_eb3soi77r4n-SgHv3_IyprDHtroGzBXdhC5S4sCv7rydm8TDp0_qMTkMjUpLwdxoQevRT-WX4fynIuq-svsm_K3kSnulkEHwVLK4MfRDsaB_in_IPD0F49KtsJMIalBk8XYXSQA1g"/>
+</button>
+</div>
+<!-- Brand Logo -->
+<h1 class="font-headline text-2xl italic font-semibold text-on-surface absolute left-1/2 transform -translate-x-1/2">
+            KiND
+        </h1>
+<!-- Desktop Navigation (Hidden on Mobile, Required by Rules) -->
+<nav class="hidden md:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2 translate-y-12 bg-surface-container-lowest/90 backdrop-blur-md px-8 py-3 rounded-full ghost-border shadow-sm">
+<a class="font-label text-sm font-medium text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Hub</a>
+<a class="font-label text-sm font-medium text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Market</a>
+<a class="font-label text-sm font-medium text-primary border-b-2 border-primary pb-1" href="#">Requests</a>
+<a class="font-label text-sm font-medium text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Vault</a>
+</nav>
+<!-- Trailing Icon -->
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-28 md:pt-40 pb-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+<!-- Page Header & Controls -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+<div>
+<h2 class="font-label text-secondary uppercase tracking-widest text-xs font-semibold mb-2">Curator's Desk</h2>
+<h3 class="font-headline text-4xl text-on-background leading-tight">Request Inbox</h3>
+<p class="font-body text-secondary mt-3 max-w-xl text-sm leading-relaxed">
+                    Review and curate incoming consultation requests. Prioritize inquiries demanding immediate architectural or archival expertise.
+                </p>
+</div>
+<!-- Segmented Control Toggle -->
+<div class="inline-flex bg-surface-container p-1 rounded-full items-center">
+<button aria-pressed="true" class="bg-surface-container-lowest text-on-surface font-label text-sm font-medium px-6 py-2 rounded-full transition-all">
+                    Pending
+                </button>
+<button aria-pressed="false" class="text-secondary hover:text-on-surface font-label text-sm font-medium px-6 py-2 rounded-full transition-all">
+                    Completed
+                </button>
+</div>
+</div>
+<!-- Request Cards Grid (Bento-inspired Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 (Urgent) -->
+<article class="bg-surface-container-lowest rounded-xl p-6 flex flex-col justify-between group hover:bg-surface-container-low transition-colors duration-300 h-full">
+<div>
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant font-label text-xs font-bold">
+                                EV
+                            </div>
+<span class="font-label text-sm font-semibold text-on-surface">Eleanor Vance</span>
+</div>
+<span class="bg-error-container text-on-error-container font-label text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider font-bold">
+                            Urgent
+                        </span>
+</div>
+<h4 class="font-headline text-xl text-on-surface mb-3 leading-snug group-hover:text-primary transition-colors">
+                        Architectural Critique: Neoclassical Revival
+                    </h4>
+<p class="font-body text-secondary text-sm leading-relaxed line-clamp-3">
+                        Seeking an urgent, comprehensive analysis of the structural and aesthetic adaptations required to authentically retrofit a 19th-century manor while maintaining its historical integrity against modern environmental standards.
+                    </p>
+</div>
+<div class="mt-8 pt-6 border-t border-surface-variant flex justify-between items-center">
+<span class="font-label text-xs text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 2 hrs ago
+                    </span>
+<button class="bg-surface-container-high text-primary hover:bg-primary hover:text-on-primary font-label text-sm font-medium px-4 py-2 rounded-lg transition-all duration-300 flex items-center gap-2">
+                        Review
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Card 2 (Standard) -->
+<article class="bg-surface-container-lowest rounded-xl p-6 flex flex-col justify-between group hover:bg-surface-container-low transition-colors duration-300 h-full">
+<div>
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="Client Avatar" class="w-full h-full object-cover" data-alt="A small, circular avatar portrait of a middle-aged male academic with glasses. The photo is tightly cropped, black and white, emitting a serious, scholarly tone suitable for a high-end editorial interface. The background is completely plain white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxsOx70bnuRvRwLidTvimw4LYQyFAs5wbq2sN_vNeUKTxwworZrHR1yMHxk7NjwpAlNMFIuaXNWEs28cGkMV1KduEGT_l8_qE7Dvb0wpIfnNEfOY0G98Ankqbf_I5dWMAnuvi1IAYCcF_pR74LUvym37A10AP0HeLMmHYdGmd93gc3wyX93BE5zKnNTUNwDSVhZGBpbDiYM9U5vx9EjqpSwqtmVJcITUxHrLflrsjZmvjQLS3MBSGYhuE5qUgw2x4XWEnjLawOKw"/>
+</div>
+<span class="font-label text-sm font-semibold text-on-surface">Dr. Montague</span>
+</div>
+<span class="bg-tertiary-container text-on-tertiary-container font-label text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider font-bold">
+                            High Priority
+                        </span>
+</div>
+<h4 class="font-headline text-xl text-on-surface mb-3 leading-snug group-hover:text-primary transition-colors">
+                        Psychological Impact of Spatial Geometry
+                    </h4>
+<p class="font-body text-secondary text-sm leading-relaxed line-clamp-3">
+                        Requesting a literature review and expert synthesis on how non-Euclidean spatial arrangements in domestic architecture influence occupant anxiety and long-term psychological well-being.
+                    </p>
+</div>
+<div class="mt-8 pt-6 border-t border-surface-variant flex justify-between items-center">
+<span class="font-label text-xs text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 1 day ago
+                    </span>
+<button class="bg-surface-container-high text-primary hover:bg-primary hover:text-on-primary font-label text-sm font-medium px-4 py-2 rounded-lg transition-all duration-300 flex items-center gap-2">
+                        Review
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Card 3 (Standard) -->
+<article class="bg-surface-container-lowest rounded-xl p-6 flex flex-col justify-between group hover:bg-surface-container-low transition-colors duration-300 h-full lg:col-span-1 md:col-span-2">
+<div>
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant font-label text-xs font-bold">
+                                TH
+                            </div>
+<span class="font-label text-sm font-semibold text-on-surface">Theodora C.</span>
+</div>
+<span class="bg-surface-container-high text-on-surface-variant font-label text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider font-bold">
+                            Standard
+                        </span>
+</div>
+<h4 class="font-headline text-xl text-on-surface mb-3 leading-snug group-hover:text-primary transition-colors">
+                        Modernizing Gothic Revival Interiors
+                    </h4>
+<p class="font-body text-secondary text-sm leading-relaxed line-clamp-3 lg:line-clamp-none">
+                        I am curating a new exhibition and need consultation on integrating contemporary minimalist lighting fixtures within heavily ornate, authentic Gothic Revival vaulted ceilings without causing visual dissonance or physical damage to the plasterwork.
+                    </p>
+</div>
+<div class="mt-8 pt-6 border-t border-surface-variant flex justify-between items-center">
+<span class="font-label text-xs text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 2 days ago
+                    </span>
+<button class="bg-surface-container-high text-primary hover:bg-primary hover:text-on-primary font-label text-sm font-medium px-4 py-2 rounded-lg transition-all duration-300 flex items-center gap-2">
+                        Review
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-16 bg-surface-container-lowest/80 backdrop-blur-xl">
+<!-- Hub (Inactive) -->
+<a class="flex flex-col items-center justify-center text-secondary pt-2 hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined mb-1 text-[20px]" style="font-variation-settings: 'FILL' 0;">architecture</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Hub</span>
+</a>
+<!-- Market (Inactive) -->
+<a class="flex flex-col items-center justify-center text-secondary pt-2 hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined mb-1 text-[20px]" style="font-variation-settings: 'FILL' 0;">auto_awesome</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Market</span>
+</a>
+<!-- Requests (Active) -->
+<a class="flex flex-col items-center justify-center text-primary border-t-2 border-primary pt-2 scale-95 duration-150" href="#">
+<span class="material-symbols-outlined mb-1 text-[20px]" style="font-variation-settings: 'FILL' 1;">post_add</span>
+<span class="font-label text-[10px] uppercase tracking-widest font-bold">Requests</span>
+</a>
+<!-- Vault (Inactive) -->
+<a class="flex flex-col items-center justify-center text-secondary pt-2 hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined mb-1 text-[20px]" style="font-variation-settings: 'FILL' 0;">history_edu</span>
+<span class="font-label text-[10px] uppercase tracking-widest">Vault</span>
+</a>
+</nav>
+</body></html>
