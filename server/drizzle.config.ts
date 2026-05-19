@@ -1,0 +1,10 @@
+import { defineConfig } from "drizzle-kit";
+
+const sqlitePath = process.env.SQLITE_PATH ?? "./data/kind.sqlite";
+
+export default defineConfig({
+  schema: "./src/db/schema.ts",
+  out: "./drizzle",
+  dialect: "sqlite",
+  dbCredentials: { url: sqlitePath },
+});
