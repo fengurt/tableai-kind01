@@ -1,0 +1,23 @@
+# API + SQLite only (no Postgres) — minimal AMD64 deploy
+services:
+  api:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+      platforms:
+        - linux/amd64
+    platform: linux/amd64
+    ports:
+      - "${API_PORT:-8788}:8788"
+    environment:
+      HOST: 0.0.0.0
+      API_PORT: 8788
+      SQLITE_PATH: /app/data/kind.sqlite
+      KIND_RUN_MIGRATE: "1"
+      KIND_RUN_SEED: ${KIND_RUN_SEED:-1}
+    volumes:
+      - kind-sqlite-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  kind-sqlite-data:

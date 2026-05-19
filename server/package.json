@@ -10,7 +10,9 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "tsx src/db/migrate.ts",
     "db:seed": "tsx src/db/seed.ts",
-    "db:sync": "tsx src/db/sync.ts"
+    "db:sync": "tsx src/db/sync.ts",
+    "test": "tsx --test test/**/*.test.ts",
+    "test:watch": "tsx --test --watch test/**/*.test.ts"
   },
   "dependencies": {
     "@libsql/client": "^0.14.0",

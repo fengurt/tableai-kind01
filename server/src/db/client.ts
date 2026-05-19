@@ -71,3 +71,8 @@ export async function closeConnections() {
     sqliteDb = null;
   }
 }
+
+/** Close DB singletons so tests can point SQLITE_PATH at a fresh file. */
+export async function resetDbForTests() {
+  await closeConnections();
+}

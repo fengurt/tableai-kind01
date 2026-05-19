@@ -10,4 +10,5 @@ data/
 node_modules/
 server/node_modules/
 server/dist/
+server/.env
 .DS_Store

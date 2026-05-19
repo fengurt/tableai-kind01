@@ -49,9 +49,44 @@ The script checks `lsof` for listeners, stops **only** prior KiND servers (same 
 
 Toggle **EN / 中文** (top right). Preference saved in `localStorage`.
 
+## Docker (AMD64 / Linux servers)
+
+Images target **`linux/amd64`** for typical AMD cloud VMs.
+
+```bash
+# Full stack: Postgres + API + nginx (H5 + /api proxy)
+docker compose up -d --build
+# App: http://localhost:8080/kind-dual-role.html
+
+# API-only (SQLite volume, no Postgres)
+docker compose -f docker-compose.api-only.yml up -d --build
+
+# Explicit amd64 build (e.g. from Mac ARM)
+chmod +x scripts/docker-build-amd64.sh
+./scripts/docker-build-amd64.sh
+```
+
+| Service | Port | Notes |
+|---------|------|--------|
+| `web` | 8080 | Static prototype; proxies `/api` → `api` |
+| `api` | 8788 (internal) | SQLite volume `/app/data` |
+| `postgres` | 5432 (internal) | Optional sync target |
+
+Env: `WEB_PORT`, `SYNC_ON_WRITE`, `KIND_RUN_SEED` (default seed on first deploy).
+
+## Tests
+
+```bash
+cd server && npm test
+```
+
+CI runs tests and `linux/amd64` Docker builds on every PR.
+
 ## Files
 
 - `kind-dual-role.html` — full app (single file)
 - `server/` — Fastify API, Drizzle ORM, SQLite + Postgres sync
+- `docker-compose.yml` — production-style stack (amd64)
 - `stitch_expert_twin_marketplace/` — Stitch reference screens
 - `scripts/dev-up.sh` — port check, kill previous KiND server, start `python3 -m http.server`
+- `scripts/docker-build-amd64.sh` — build amd64 images
