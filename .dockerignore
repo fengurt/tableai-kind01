@@ -1,0 +1,14 @@
+.git
+.github
+.kind-dev.pid
+.kind-dev.meta
+data
+**/node_modules
+server/dist
+**/*.sqlite
+**/*.sqlite-*
+.env
+.env.*
+*.log
+stitch_expert_twin_marketplace/**/screen.png
+.DS_Store

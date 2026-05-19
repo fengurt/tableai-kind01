@@ -1,0 +1,66 @@
+# KiND stack — tuned for AMD64 Linux servers (docker compose up)
+# Build for AMD: docker compose build --no-cache
+# Or: ./scripts/docker-build-amd64.sh
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    platform: linux/amd64
+    environment:
+      POSTGRES_USER: kind
+      POSTGRES_PASSWORD: kind
+      POSTGRES_DB: kind
+    volumes:
+      - kind-pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kind -d kind"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+      platforms:
+        - linux/amd64
+    platform: linux/amd64
+    environment:
+      HOST: 0.0.0.0
+      API_PORT: 8788
+      SQLITE_PATH: /app/data/kind.sqlite
+      POSTGRES_URL: postgresql://kind:kind@postgres:5432/kind
+      SYNC_ON_WRITE: ${SYNC_ON_WRITE:-0}
+      KIND_RUN_MIGRATE: "1"
+      KIND_RUN_SEED: ${KIND_RUN_SEED:-1}
+    volumes:
+      - kind-sqlite-data:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8788/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.web
+      platforms:
+        - linux/amd64
+    platform: linux/amd64
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  kind-sqlite-data:
+  kind-pg-data:

@@ -1,0 +1,8 @@
+# Static H5 prototype + reverse proxy to API (linux/amd64)
+FROM --platform=linux/amd64 nginx:1.27-alpine
+RUN apk add --no-cache curl
+COPY kind-dual-role.html /usr/share/nginx/html/kind-dual-role.html
+COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s \
+  CMD curl -fsS http://127.0.0.1/health || exit 1
